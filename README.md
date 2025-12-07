@@ -1,6 +1,6 @@
 # 🌐 Social App – Next.js + TypeScript
 
-A modern social media web app built with **Next.js 15** and **TypeScript**.  
+A modern social media web app built with **Next.js 16** and **TypeScript**.  
 Users can sign up, log in, create posts, comment on others’ posts, and manage their profiles — all through a clean and responsive MUI interface.
 
 ## 🚀 Features
@@ -17,7 +17,7 @@ Users can sign up, log in, create posts, comment on others’ posts, and manage 
 
 ## 🧰 Tech Stack
 
-- **Next.js 15**
+- **Next.js 16**
 - **React 19**
 - **TypeScript**
 - **MUI (Material UI)**
