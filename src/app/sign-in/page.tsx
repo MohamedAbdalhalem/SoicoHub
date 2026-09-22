@@ -6,8 +6,8 @@ import siginImage from '@/assests/photo-1516321318423-f06f85e504b3.avif'
 
 export default function SignInPage() {
     return (
-        <main className='flex min-h-screen items-center justify-center bg-[#f5f5f5] p-4 sm:p-6 lg:p-8'>
-            <div className='flex h-215 w-full max-w-340 overflow-hidden rounded-[30px] border border-border bg-white shadow-[0_30px_90px_rgba(17,24,39,0.12)]'>
+        <main className='flex min-h-screen items-center justify-center bg-[#f5f5f5] p-4 dark:bg-[#10151f] sm:p-6 lg:p-8'>
+            <div className='flex h-215 w-full max-w-340 overflow-hidden rounded-[30px] border border-border bg-white shadow-[0_30px_90px_rgba(17,24,39,0.12)] dark:bg-[#171d29] dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]'>
                 <section className='relative hidden w-[52%] overflow-hidden bg-[#0d2bb8] lg:block'>
                     <div
                         className='absolute inset-0 bg-cover bg-center opacity-90'
@@ -51,31 +51,31 @@ export default function SignInPage() {
                     </div>
                 </section>
 
-                <section className='flex flex-1 items-center justify-center bg-[#f7f7f7] px-5 py-8 sm:px-8 lg:px-10'>
+                <section className='flex flex-1 items-center justify-center bg-[#f7f7f7] px-5 py-8 dark:bg-[#171d29] sm:px-8 lg:px-10'>
                     <div className='w-full max-w-105'>
                         <div className='mb-8 flex items-start justify-between gap-4'>
                             <div className='space-y-1'>
-                                <h2 className='text-4xl font-semibold tracking-tighter text-[#1b1d20]'>Sign in</h2>
+                                <h2 className='text-4xl font-semibold tracking-tighter text-[#1b1d20] dark:text-[#f1f4fb]'>Sign in</h2>
                                 <p className='text-base text-muted-foreground'>Enter your credentials to continue.</p>
                             </div>
                         </div>
 
                         <form className='space-y-5'>
                             <div className='space-y-2'>
-                                <label htmlFor='email' className='block text-sm font-medium text-[#1f2937]'>
+                                <label htmlFor='email' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
                                     Email or username
                                 </label>
                                 <input
                                     id='email'
                                     type='email'
                                     defaultValue='aria@example.com'
-                                    className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20'
+                                    className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb]'
                                 />
                             </div>
 
                             <div className='space-y-2'>
                                 <div className='flex items-center justify-between'>
-                                    <label htmlFor='password' className='block text-sm font-medium text-[#1f2937]'>
+                                    <label htmlFor='password' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
                                         Password
                                     </label>
                                     <button type='button' className='text-sm font-medium text-[#4d62ff] hover:underline'>
@@ -87,7 +87,7 @@ export default function SignInPage() {
                                         id='password'
                                         type='password'
                                         placeholder='Enter password'
-                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 pr-11 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af]'
+                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 pr-11 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
                                     />
                                     <button
                                         type='button'
@@ -108,14 +108,14 @@ export default function SignInPage() {
                                     <div className='w-full border-t border-[#dfe4ea]' />
                                 </div>
                                 <div className='relative flex justify-center'>
-                                    <span className='bg-[#f7f7f7] px-4 text-sm text-[#6b7280]'>or</span>
+                                    <span className='bg-[#f7f7f7] px-4 text-sm text-[#6b7280] dark:bg-[#171d29] dark:text-[#aeb8ca]'>or</span>
                                 </div>
                             </div>
 
                             <Button
                                 type='button'
                                 variant='outline'
-                                className='h-12 w-full rounded-xl border border-[#dfe4ea] bg-white text-base font-medium text-[#1b1d20] hover:bg-[#f3f5f9]'
+                                className='h-12 w-full rounded-xl border border-[#dfe4ea] bg-white text-base font-medium text-[#1b1d20] hover:bg-[#f3f5f9] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:hover:bg-[#293447]'
                             >
                                 <span className='mr-3 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-[#1f2937]'>
                                     G
@@ -123,7 +123,7 @@ export default function SignInPage() {
                                 Continue with Google
                             </Button>
 
-                            <p className='mt-6 text-center text-base text-[#39404a]'>
+                            <p className='mt-6 text-center text-base text-[#39404a] dark:text-[#c3ccda]'>
                                 Don&apos;t have an account?{' '}
                                 <Link href='/sign-up' className='font-medium text-[#4d62ff] hover:underline'>
                                     Sign Up

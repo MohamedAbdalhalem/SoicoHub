@@ -84,14 +84,14 @@ const posts = [
 
 export default function Home() {
   return (
-    <main className='min-h-screen bg-[#f3f5f8]'>
-      <div className='flex h-screen w-full overflow-hidden bg-[#f3f5f8]'>
-        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 lg:flex lg:flex-col'>
+    <main className='min-h-screen bg-[#f3f5f8] dark:bg-[#10151f]'>
+      <div className='flex h-screen w-full overflow-hidden bg-[#f3f5f8] dark:bg-[#10151f]'>
+        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 dark:border-[#293242] dark:bg-[#171d29] lg:flex lg:flex-col'>
           <div className='mb-8 flex items-center gap-3 pl-1'>
             <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-[#5a4ae9] text-white shadow-[0_8px_18px_rgba(90,74,233,0.35)]'>
               <Sparkles className='h-4 w-4' />
             </div>
-            <span className='text-[17px] font-semibold tracking-tight text-[#2a2f3a]'>Route Posts</span>
+            <span className='text-[17px] font-semibold tracking-tight text-[#2a2f3a] dark:text-[#eef2ff]'>Route Posts</span>
           </div>
 
           <nav className='space-y-2'>
@@ -101,7 +101,7 @@ export default function Home() {
                 type='button'
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium transition ${active
                     ? 'bg-[#5b4fe8] text-white shadow-[0_8px_18px_rgba(91,79,232,0.22)]'
-                    : 'text-[#2f3742] hover:bg-[#eceef9]'
+                    : 'text-[#2f3742] hover:bg-[#eceef9] dark:text-[#d8deeb] dark:hover:bg-[#222b3b]'
                   }`}
               >
                 <Icon className='h-4 w-4' />
@@ -122,32 +122,32 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5'>
+          <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5 dark:border-[#293242] dark:bg-[#202838]'>
             <div className='flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-[#d9d2ff] to-[#f5d6cf] text-[11px] font-bold text-[#2e2a49]'>
               AC
             </div>
             <div className='min-w-0 flex-1'>
-              <p className='truncate text-[14px] font-semibold text-[#1e2330]'>Aria Chen</p>
-              <p className='truncate text-[12px] text-[#6a7280]'>@aria_chen</p>
+              <p className='truncate text-[14px] font-semibold text-[#1e2330] dark:text-[#eef2ff]'>Aria Chen</p>
+              <p className='truncate text-[12px] text-[#6a7280] dark:text-[#aeb8ca]'>@aria_chen</p>
             </div>
           </div>
         </aside>
 
-        <section className='flex-1 min-w-0 overflow-y-auto bg-[#f3f5f8]'>
-          <div className='border-b border-[#e5e8ee] bg-[#f6f7fb] px-3 py-3 sm:px-5 lg:px-6'>
+        <section className='flex-1 min-w-0 overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
+          <div className='border-b border-[#e5e8ee] bg-[#f6f7fb] px-3 py-3 dark:border-[#293242] dark:bg-[#171d29] sm:px-5 lg:px-6'>
             <div className='flex items-center justify-between gap-3'>
               <div className='flex items-center gap-3'>
                 <div className='flex h-9 w-9 items-center justify-center rounded-xl bg-[#5b4fe8] text-white shadow-[0_8px_18px_rgba(91,79,232,0.22)] lg:hidden'>
                   <Sparkles className='h-4 w-4' />
                 </div>
-                <div className='text-[17px] font-semibold tracking-tight text-[#2d323d]'>Route Posts</div>
+                <div className='text-[17px] font-semibold tracking-tight text-[#2d323d] dark:text-[#eef2ff]'>Route Posts</div>
               </div>
 
               <div className='flex items-center gap-3'>
-                <div className='hidden h-9 w-9 items-center justify-center rounded-full bg-white ring-1 ring-[#e5e7eb] sm:flex'>
+                <div className='hidden h-9 w-9 items-center justify-center rounded-full bg-white ring-1 ring-[#e5e7eb] dark:bg-[#202838] dark:ring-[#354154] sm:flex'>
                   <Search className='h-4 w-4 text-[#5b6472]' />
                 </div>
-                <div className='flex h-9 w-9 items-center justify-center rounded-full bg-white ring-1 ring-[#e5e7eb]'>
+                <div className='flex h-9 w-9 items-center justify-center rounded-full bg-white ring-1 ring-[#e5e7eb] dark:bg-[#202838] dark:ring-[#354154]'>
                   <Bell className='h-4 w-4 text-[#5b6472]' />
                 </div>
               </div>
@@ -159,40 +159,40 @@ export default function Home() {
               <button type='button' className='flex-1 text-center text-[15px] font-semibold text-[#5b4fe8] underline decoration-[#5b4fe8] decoration-2 underline-offset-12'>
                 For You
               </button>
-              <button type='button' className='flex-1 text-center text-[15px] font-medium text-[#6f7786]'>
+              <button type='button' className='flex-1 text-center text-[15px] font-medium text-[#6f7786] dark:text-[#aeb8ca]'>
                 Following
               </button>
             </div>
 
             <div className='space-y-4'>
               {posts.map((post) => (
-                <article key={post.author} className='rounded-[20px] border border-[#e5e8ee] bg-[#f7f8fb] p-4 shadow-[0_1px_0_rgba(17,24,39,0.02)]'>
+                <article key={post.author} className='rounded-[20px] border border-[#e5e8ee] bg-[#f7f8fb] p-4 shadow-[0_1px_0_rgba(17,24,39,0.02)] dark:border-[#303a4c] dark:bg-[#1b2330]'>
                   <div className='mb-3 flex items-start justify-between gap-3'>
                     <div className='flex items-center gap-3'>
                       <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br ${post.accent} text-[11px] font-bold text-[#1f2937]`}>
                         {post.avatar}
                       </div>
                       <div className='leading-tight'>
-                        <div className='flex flex-wrap items-center gap-2 text-[15px] font-semibold text-[#1d2430]'>
+                        <div className='flex flex-wrap items-center gap-2 text-[15px] font-semibold text-[#1d2430] dark:text-[#e9eef8]'>
                           <span>{post.author}</span>
-                          <span className='text-[#7b8393]'>{post.handle}</span>
-                          <span className='text-[#7b8393]'>•</span>
-                          <span className='text-[#7b8393]'>{post.time}</span>
+                          <span className='text-[#7b8393] dark:text-[#9da9bc]'>{post.handle}</span>
+                          <span className='text-[#7b8393] dark:text-[#9da9bc]'>•</span>
+                          <span className='text-[#7b8393] dark:text-[#9da9bc]'>{post.time}</span>
                         </div>
                       </div>
                     </div>
 
-                    <button type='button' className='flex h-8 w-8 items-center justify-center rounded-full text-[#7a8190] hover:bg-white'>
+                    <button type='button' className='flex h-8 w-8 items-center justify-center rounded-full text-[#7a8190] hover:bg-white dark:text-[#9da9bc] dark:hover:bg-[#293447]'>
                       <MoreHorizontal className='h-4 w-4' />
                     </button>
                   </div>
 
-                  <p className='whitespace-pre-line text-[15px] leading-relaxed text-[#2d3746]'>
+                  <p className='whitespace-pre-line text-[15px] leading-relaxed text-[#2d3746] dark:text-[#d4dce9]'>
                     {post.text}
                   </p>
 
                   {post.image ? (
-                    <div className='mt-4 overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white'>
+                    <div className='mt-4 overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white dark:border-[#303a4c] dark:bg-[#202838]'>
                       <img src={post.image} alt={`${post.author} post`} className='h-65 w-full object-cover sm:h-70 md:h-80' />
                     </div>
                   ) : null}
@@ -224,9 +224,9 @@ export default function Home() {
           </div>
         </section>
 
-        <aside className='hidden w-72.5 shrink-0 border-l border-[#e5e8ee] bg-[#f6f7fb] p-4 xl:block'>
-          <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4'>
-            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b]'>Who to follow</h3>
+        <aside className='hidden w-72.5 shrink-0 border-l border-[#e5e8ee] bg-[#f6f7fb] p-4 dark:border-[#293242] dark:bg-[#171d29] xl:block'>
+          <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
+            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
             <div className='space-y-3'>
               {suggestions.map(({ name, handle, accent }) => (
                 <div key={name} className='flex items-center justify-between gap-3'>
@@ -239,8 +239,8 @@ export default function Home() {
                         .join('')}
                     </div>
                     <div className='min-w-0'>
-                      <p className='truncate text-[14px] font-semibold text-[#222937]'>{name}</p>
-                      <p className='truncate text-[12px] text-[#7a8090]'>{handle}</p>
+                      <p className='truncate text-[14px] font-semibold text-[#222937] dark:text-[#e9eef8]'>{name}</p>
+                      <p className='truncate text-[12px] text-[#7a8090] dark:text-[#9da9bc]'>{handle}</p>
                     </div>
                   </div>
 
@@ -256,13 +256,13 @@ export default function Home() {
             </button>
           </div>
 
-          <div className='mt-5 rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4'>
-            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b]'>Trending topics</h3>
+          <div className='mt-5 rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
+            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Trending topics</h3>
             <div className='space-y-3'>
               {trends.map(({ tag, posts }) => (
                 <div key={tag} className='flex items-center justify-between gap-3'>
-                  <div className='text-[14px] font-medium text-[#2b2f3b]'>{tag}</div>
-                  <div className='text-[12px] text-[#798090]'>{posts}</div>
+                  <div className='text-[14px] font-medium text-[#2b2f3b] dark:text-[#e9eef8]'>{tag}</div>
+                  <div className='text-[12px] text-[#798090] dark:text-[#9da9bc]'>{posts}</div>
                 </div>
               ))}
             </div>
@@ -270,24 +270,24 @@ export default function Home() {
         </aside>
       </div>
 
-      <div className='fixed inset-x-0 bottom-0 z-20 border-t border-[#dfe4eb] bg-[#f6f7fb] px-4 py-2 shadow-[0_-8px_18px_rgba(15,23,42,0.06)] lg:hidden'>
+      <div className='fixed inset-x-0 bottom-0 z-20 border-t border-[#dfe4eb] bg-[#f6f7fb] px-4 py-2 shadow-[0_-8px_18px_rgba(15,23,42,0.06)] dark:border-[#293242] dark:bg-[#171d29] lg:hidden'>
         <div className='mx-auto flex max-w-105 items-center justify-between'>
           <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl bg-[#5b4fe8] text-white'>
             <House className='h-5 w-5' />
           </button>
-          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788]'>
+          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788] dark:text-[#aeb8ca]'>
             <Search className='h-5 w-5' />
           </button>
-          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788]'>
+          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788] dark:text-[#aeb8ca]'>
             <SquarePen className='h-5 w-5' />
           </button>
-          <button type='button' className='relative flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788]'>
+          <button type='button' className='relative flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788] dark:text-[#aeb8ca]'>
             <Bell className='h-5 w-5' />
             <span className='absolute right-2 top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#5b4fe8] px-1 text-[9px] font-semibold text-white'>
               4
             </span>
           </button>
-          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788]'>
+          <button type='button' className='flex h-11 w-11 items-center justify-center rounded-xl text-[#6d7788] dark:text-[#aeb8ca]'>
             <CircleUser className='h-5 w-5' />
           </button>
         </div>

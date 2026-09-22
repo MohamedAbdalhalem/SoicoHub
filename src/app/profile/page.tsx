@@ -19,8 +19,8 @@ const postImages = [
 
 export default function ProfilePage() {
     const rightAside = (
-        <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4'>
-            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b]'>Who to follow</h3>
+        <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
+            <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
             <div className='space-y-3'>
                 {suggestions.map(({ name, handle, accent }) => (
                     <div key={name} className='flex items-center justify-between gap-3'>
@@ -33,8 +33,8 @@ export default function ProfilePage() {
                                     .join('')}
                             </div>
                             <div className='min-w-0'>
-                                <p className='truncate text-[14px] font-semibold text-[#222937]'>{name}</p>
-                                <p className='truncate text-[12px] text-[#7a8090]'>{handle}</p>
+                                <p className='truncate text-[14px] font-semibold text-[#222937] dark:text-[#e9eef8]'>{name}</p>
+                                <p className='truncate text-[12px] text-[#7a8090] dark:text-[#9da9bc]'>{handle}</p>
                             </div>
                         </div>
 
@@ -53,17 +53,17 @@ export default function ProfilePage() {
 
     return (
         <AppShell activeItem='Profile' rightAside={rightAside}>
-            <div className='h-full overflow-y-auto bg-[#f3f5f8]'>
+            <div className='h-full overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
                 <div className='mx-auto max-w-190 px-4 py-4 sm:px-5 lg:px-0 lg:py-6'>
-                    <div className='overflow-hidden rounded-[22px] border border-[#e6e9ee] bg-[#f7f8fb]'>
+                    <div className='overflow-hidden rounded-[22px] border border-[#e6e9ee] bg-[#f7f8fb] dark:border-[#303a4c] dark:bg-[#1b2330]'>
                         <div className='relative border-b border-[#e6e9ee] bg-[#f4f6fb] p-0'>
-                            <div className='relative h-60 w-full overflow-hidden bg-[linear-gradient(90deg,#b34cf8_0%,#5f63f0_50%,#4a8bff_100%)]'>
+                                    <div className='relative h-60 w-full overflow-hidden bg-[linear-gradient(90deg,#b34cf8_0%,#5f63f0_50%,#4a8bff_100%)] dark:brightness-75'>
                                 <div className='absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.20),transparent_25%),radial-gradient(circle_at_80%_32%,rgba(255,255,255,0.18),transparent_22%)]' />
                             </div>
 
                             <div className='relative -mt-14.5 flex items-end justify-between px-5 pb-3 sm:px-6'>
                                 <div className='flex items-end gap-4'>
-                                    <div className='relative h-30 w-30 overflow-hidden rounded-full border-4 border-[#f3f5f8] bg-white shadow-[0_16px_26px_rgba(23,30,44,0.12)]'>
+                                    <div className='relative h-30 w-30 overflow-hidden rounded-full border-4 border-[#f3f5f8] bg-white shadow-[0_16px_26px_rgba(23,30,44,0.12)] dark:border-[#10151f] dark:bg-[#202838]'>
                                         <img
                                             src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80'
                                             alt='Aria Chen'
@@ -72,14 +72,14 @@ export default function ProfilePage() {
                                     </div>
 
                                     <div className='mb-3 hidden sm:block'>
-                                        <button type='button' className='flex h-11 w-11 items-center justify-center rounded-full border border-[#dde1eb] bg-white text-[#2b2f3b] shadow-sm'>
+                                        <button type='button' className='flex h-11 w-11 items-center justify-center rounded-full border border-[#dde1eb] bg-white text-[#2b2f3b] shadow-sm dark:border-[#354154] dark:bg-[#202838] dark:text-[#e9eef8]'>
                                             <Camera className='h-4 w-4' />
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className='mb-2 hidden items-center gap-3 sm:flex'>
-                                    <button type='button' className='flex items-center gap-2 rounded-full border border-[#dfe3eb] bg-white px-4 py-2.5 text-[15px] font-medium text-[#1f2430]'>
+                                    <button type='button' className='flex items-center gap-2 rounded-full border border-[#dfe3eb] bg-white px-4 py-2.5 text-[15px] font-medium text-[#1f2430] dark:border-[#354154] dark:bg-[#202838] dark:text-[#e9eef8]'>
                                         <PencilLine className='h-4 w-4' />
                                         Edit Profile
                                     </button>
@@ -90,22 +90,22 @@ export default function ProfilePage() {
                         <div className='px-5 pb-5 sm:px-6'>
                             <div className='mb-2 flex items-center justify-between gap-4'>
                                 <div>
-                                    <h2 className='text-[28px] font-semibold leading-none tracking-tighter text-[#171d27]'>Aria Chen</h2>
-                                    <div className='mt-2 text-[16px] text-[#6a7280]'>@aria_chen</div>
+                                    <h2 className='text-[28px] font-semibold leading-none tracking-tighter text-[#171d27] dark:text-[#f1f4fb]'>Aria Chen</h2>
+                                    <div className='mt-2 text-[16px] text-[#6a7280] dark:text-[#aeb8ca]'>@aria_chen</div>
                                 </div>
 
                                 <div className='mb-2 sm:hidden'>
-                                    <button type='button' className='rounded-full border border-[#dfe3eb] bg-white px-4 py-2 text-[14px] font-medium text-[#1f2430]'>
+                                    <button type='button' className='rounded-full border border-[#dfe3eb] bg-white px-4 py-2 text-[14px] font-medium text-[#1f2430] dark:border-[#354154] dark:bg-[#202838] dark:text-[#e9eef8]'>
                                         Edit Profile
                                     </button>
                                 </div>
                             </div>
 
-                            <p className='max-w-190 text-[20px] leading-8 text-[#2d3542]'>
+                            <p className='max-w-190 text-[20px] leading-8 text-[#2d3542] dark:text-[#d4dce9]'>
                                 Product designer & frontend dev. Building design systems that don&apos;t suck. She/her
                             </p>
 
-                            <div className='mt-4 flex flex-wrap items-center gap-5 text-[14px] text-[#5d6878]'>
+                            <div className='mt-4 flex flex-wrap items-center gap-5 text-[14px] text-[#5d6878] dark:text-[#aeb8ca]'>
                                 <div className='flex items-center gap-2'>
                                     <MapPin className='h-4 w-4' />
                                     <span>San Francisco, CA</span>
@@ -118,33 +118,33 @@ export default function ProfilePage() {
 
                             <div className='mt-6 flex flex-wrap items-center gap-8'>
                                 <div>
-                                    <span className='text-[18px] font-semibold text-[#171d27]'>247</span>
-                                    <span className='ml-1 text-[15px] text-[#697486]'>Posts</span>
+                                    <span className='text-[18px] font-semibold text-[#171d27] dark:text-[#f1f4fb]'>247</span>
+                                    <span className='ml-1 text-[15px] text-[#697486] dark:text-[#aeb8ca]'>Posts</span>
                                 </div>
                                 <div>
-                                    <span className='text-[18px] font-semibold text-[#171d27]'>14.2K</span>
-                                    <span className='ml-1 text-[15px] text-[#697486]'>Followers</span>
+                                    <span className='text-[18px] font-semibold text-[#171d27] dark:text-[#f1f4fb]'>14.2K</span>
+                                    <span className='ml-1 text-[15px] text-[#697486] dark:text-[#aeb8ca]'>Followers</span>
                                 </div>
                                 <div>
-                                    <span className='text-[18px] font-semibold text-[#171d27]'>832</span>
-                                    <span className='ml-1 text-[15px] text-[#697486]'>Following</span>
+                                    <span className='text-[18px] font-semibold text-[#171d27] dark:text-[#f1f4fb]'>832</span>
+                                    <span className='ml-1 text-[15px] text-[#697486] dark:text-[#aeb8ca]'>Following</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className='border-t border-[#e5e8ee] bg-[#f6f7fb] px-5 py-4 sm:px-6'>
-                            <div className='flex items-center justify-between border-b border-[#e5e8ee] pb-2'>
+                        <div className='border-t border-[#e5e8ee] bg-[#f6f7fb] px-5 py-4 dark:border-[#303a4c] dark:bg-[#171d29] sm:px-6'>
+                            <div className='flex items-center justify-between border-b border-[#e5e8ee] pb-2 dark:border-[#303a4c]'>
                                 <button type='button' className='flex-1 text-center text-[18px] font-semibold text-[#5a4ae9] underline decoration-[#5a4ae9] decoration-[3px] underline-offset-14'>
                                     Posts
                                 </button>
-                                <button type='button' className='flex-1 text-center text-[18px] font-medium text-[#677183]'>
+                                <button type='button' className='flex-1 text-center text-[18px] font-medium text-[#677183] dark:text-[#aeb8ca]'>
                                     Bookmarks
                                 </button>
                             </div>
 
                             <div className='mt-4 grid grid-cols-2 gap-3 sm:gap-4'>
                                 {postImages.map((src, index) => (
-                                    <div key={src} className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white'>
+                                    <div key={src} className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white dark:border-[#303a4c] dark:bg-[#202838]'>
                                         <img src={src} alt={`Post ${index + 1}`} className='h-45 w-full object-cover sm:h-52.5' />
                                     </div>
                                 ))}

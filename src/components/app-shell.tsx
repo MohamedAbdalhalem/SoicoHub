@@ -39,14 +39,14 @@ export function AppShell({
   activeItem: ActiveNavItem
 }) {
   return (
-    <main className='min-h-screen bg-[#f3f5f8]'>
-      <div className='flex h-screen w-full overflow-hidden bg-[#f3f5f8]'>
-        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 lg:flex lg:flex-col'>
+    <main className='min-h-screen bg-[#f3f5f8] dark:bg-[#10151f]'>
+      <div className='flex h-screen w-full overflow-hidden bg-[#f3f5f8] dark:bg-[#10151f]'>
+        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 dark:border-[#293242] dark:bg-[#171d29] lg:flex lg:flex-col'>
           <div className='mb-8 flex items-center gap-3 pl-1'>
             <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-[#5a4ae9] text-white shadow-[0_8px_18px_rgba(90,74,233,0.35)]'>
               <Sparkles className='h-4 w-4' />
             </div>
-            <span className='text-[17px] font-semibold tracking-tight text-[#2a2f3a]'>Route Posts</span>
+            <span className='text-[17px] font-semibold tracking-tight text-[#2a2f3a] dark:text-[#eef2ff]'>Route Posts</span>
           </div>
 
           <nav className='space-y-2'>
@@ -60,7 +60,7 @@ export function AppShell({
                   className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium transition ${
                     isActive
                       ? 'bg-[#5b4fe8] text-white shadow-[0_8px_18px_rgba(91,79,232,0.22)]'
-                      : 'text-[#2f3742] hover:bg-[#eceef9]'
+                      : 'text-[#2f3742] hover:bg-[#eceef9] dark:text-[#d8deeb] dark:hover:bg-[#222b3b]'
                   }`}
                 >
                   <Icon className='h-4 w-4' />
@@ -82,27 +82,27 @@ export function AppShell({
             </Button>
           </div>
 
-          <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5'>
+          <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5 dark:border-[#293242] dark:bg-[#202838]'>
             <div className='flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-[#d9d2ff] to-[#f5d6cf] text-[11px] font-bold text-[#2e2a49]'>
               AC
             </div>
             <div className='min-w-0 flex-1'>
-              <p className='truncate text-[14px] font-semibold text-[#1e2330]'>Aria Chen</p>
-              <p className='truncate text-[12px] text-[#6a7280]'>@aria_chen</p>
+              <p className='truncate text-[14px] font-semibold text-[#1e2330] dark:text-[#eef2ff]'>Aria Chen</p>
+              <p className='truncate text-[12px] text-[#6a7280] dark:text-[#aeb8ca]'>@aria_chen</p>
             </div>
           </div>
         </aside>
 
-        <section className='flex-1 min-w-0 bg-[#f3f5f8]'>{children}</section>
+        <section className='flex-1 min-w-0 bg-[#f3f5f8] dark:bg-[#10151f]'>{children}</section>
 
         {rightAside ? (
-          <aside className='hidden w-72.5 shrink-0 border-l border-[#e5e8ee] bg-[#f6f7fb] p-4 xl:block'>
+          <aside className='hidden w-72.5 shrink-0 border-l border-[#e5e8ee] bg-[#f6f7fb] p-4 dark:border-[#293242] dark:bg-[#171d29] xl:block'>
             {rightAside}
           </aside>
         ) : null}
       </div>
 
-      <div className='fixed inset-x-0 bottom-0 z-20 border-t border-[#dfe4eb] bg-[#f6f7fb] px-4 py-2 shadow-[0_-8px_18px_rgba(15,23,42,0.06)] lg:hidden'>
+      <div className='fixed inset-x-0 bottom-0 z-20 border-t border-[#dfe4eb] bg-[#f6f7fb] px-4 py-2 shadow-[0_-8px_18px_rgba(15,23,42,0.06)] dark:border-[#293242] dark:bg-[#171d29] lg:hidden'>
         <div className='mx-auto flex max-w-105 items-center justify-between'>
           {navItems.map(({ label, icon: Icon, href, badge }) => {
             const isActive = activeItem === label
@@ -112,7 +112,7 @@ export function AppShell({
                 key={label}
                 href={href}
                 className={`relative flex h-11 w-11 items-center justify-center rounded-xl ${
-                  isActive ? 'bg-[#5b4fe8] text-white' : 'text-[#6d7788]'
+                  isActive ? 'bg-[#5b4fe8] text-white' : 'text-[#6d7788] dark:text-[#aeb8ca]'
                 }`}
               >
                 <Icon className='h-5 w-5' />

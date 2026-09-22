@@ -17,8 +17,8 @@ const notifications = [
 
 export default function  Page() {
   const rightAside = (
-    <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4'>
-      <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b]'>Who to follow</h3>
+    <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
+      <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
       <div className='space-y-3'>
         {suggestions.map(({ name, handle, accent }) => (
           <div key={name} className='flex items-center justify-between gap-3'>
@@ -31,8 +31,8 @@ export default function  Page() {
                   .join('')}
               </div>
               <div className='min-w-0'>
-                <p className='truncate text-[14px] font-semibold text-[#222937]'>{name}</p>
-                <p className='truncate text-[12px] text-[#7a8090]'>{handle}</p>
+                <p className='truncate text-[14px] font-semibold text-[#222937] dark:text-[#e9eef8]'>{name}</p>
+                <p className='truncate text-[12px] text-[#7a8090] dark:text-[#9da9bc]'>{handle}</p>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ export default function  Page() {
       <div className='overflow-y-auto px-4 py-5 sm:px-5 lg:px-0'>
         <div className='mx-auto max-w-190'>
           <div className='mb-5 flex items-center justify-between'>
-            <h1 className='text-[30px] font-semibold tracking-[-0.06em] text-[#1e2430]'>Notifications</h1>
+            <h1 className='text-[30px] font-semibold tracking-[-0.06em] text-[#1e2430] dark:text-[#f1f4fb]'>Notifications</h1>
             <button type='button' className='text-[15px] font-medium text-[#5a4ae9] hover:underline'>
               Mark all as read
             </button>
@@ -64,7 +64,7 @@ export default function  Page() {
             <button type='button' className='flex-1 text-center text-[17px] font-semibold text-[#5a4ae9] underline decoration-[#5a4ae9] decoration-2 underline-offset-12'>
               All
             </button>
-            <div className='flex flex-1 items-center justify-center gap-2 text-[17px] font-medium text-[#5d6677]'>
+            <div className='flex flex-1 items-center justify-center gap-2 text-[17px] font-medium text-[#5d6677] dark:text-[#b7c1d1]'>
               <span>Unread</span>
               <span className='flex h-6 min-w-6 items-center justify-center rounded-full bg-[#5b4fe8] px-1.5 text-[12px] font-semibold text-white'>
                 3
@@ -74,12 +74,12 @@ export default function  Page() {
 
           <div className='space-y-5'>
             <div>
-              <div className='mb-3 text-[12px] font-semibold tracking-[0.14em] text-[#6d7787] uppercase'>Today</div>
-              <div className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-[#f7f8fb]'>
+              <div className='mb-3 text-[12px] font-semibold tracking-[0.14em] text-[#6d7787] uppercase dark:text-[#9da9bc]'>Today</div>
+              <div className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-[#f7f8fb] dark:border-[#303a4c] dark:bg-[#1b2330]'>
                 {notifications.slice(0, 4).map((item) => (
                   <div
                     key={item.name}
-                    className='flex items-center gap-4 border-b border-[#e7ebf0] px-4 py-4 last:border-b-0'
+                    className='flex items-center gap-4 border-b border-[#e7ebf0] px-4 py-4 last:border-b-0 dark:border-[#303a4c]'
                   >
                     <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br ${item.accent} text-[12px] font-bold text-[#1c2430]`}>
                       {item.avatar}
@@ -88,10 +88,10 @@ export default function  Page() {
                       ) : null}
                     </div>
 
-                    <div className='flex-1 text-[15px] leading-6 text-[#1d2430]'>
+                    <div className='flex-1 text-[15px] leading-6 text-[#1d2430] dark:text-[#e9eef8]'>
                       <span className='font-semibold'>{item.name}</span>
                       <span className='text-[#4d5667]'>{item.text}</span>
-                      <div className='mt-1 text-[13px] text-[#7a8190]'>{item.time}</div>
+                      <div className='mt-1 text-[13px] text-[#7a8190] dark:text-[#9da9bc]'>{item.time}</div>
                     </div>
                   </div>
                 ))}
@@ -99,12 +99,12 @@ export default function  Page() {
             </div>
 
             <div>
-              <div className='mb-3 text-[12px] font-semibold tracking-[0.14em] text-[#6d7787] uppercase'>Yesterday</div>
-              <div className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-[#f7f8fb]'>
+              <div className='mb-3 text-[12px] font-semibold tracking-[0.14em] text-[#6d7787] uppercase dark:text-[#9da9bc]'>Yesterday</div>
+              <div className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-[#f7f8fb] dark:border-[#303a4c] dark:bg-[#1b2330]'>
                 {notifications.slice(4).map((item) => (
                   <div
                     key={item.name}
-                    className='flex items-center gap-4 border-b border-[#e7ebf0] px-4 py-4 last:border-b-0'
+                    className='flex items-center gap-4 border-b border-[#e7ebf0] px-4 py-4 last:border-b-0 dark:border-[#303a4c]'
                   >
                     <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br ${item.accent} text-[12px] font-bold text-[#1c2430]`}>
                       {item.avatar}
@@ -113,10 +113,10 @@ export default function  Page() {
                       ) : null}
                     </div>
 
-                    <div className='flex-1 text-[15px] leading-6 text-[#1d2430]'>
+                    <div className='flex-1 text-[15px] leading-6 text-[#1d2430] dark:text-[#e9eef8]'>
                       <span className='font-semibold'>{item.name}</span>
                       <span className='text-[#4d5667]'>{item.text}</span>
-                      <div className='mt-1 text-[13px] text-[#7a8190]'>{item.time}</div>
+                      <div className='mt-1 text-[13px] text-[#7a8190] dark:text-[#9da9bc]'>{item.time}</div>
                     </div>
                   </div>
                 ))}
