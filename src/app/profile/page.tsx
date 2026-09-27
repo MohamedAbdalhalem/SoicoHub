@@ -1,5 +1,5 @@
 import { AppShell } from '@/components/app-shell'
-import { Button } from '@/components/ui/button'
+import Suggestion from '@/components/Suggestion/Suggestion'
 import { Camera, PencilLine, MapPin, CalendarDays } from 'lucide-react'
 
 const suggestions = [
@@ -23,25 +23,7 @@ export default function ProfilePage() {
             <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
             <div className='space-y-3'>
                 {suggestions.map(({ name, handle, accent }) => (
-                    <div key={name} className='flex items-center justify-between gap-3'>
-                        <div className='flex items-center gap-3'>
-                            <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br ${accent} text-[10px] font-bold text-[#1f2937]`}>
-                                {name
-                                    .split(' ')
-                                    .map((part) => part[0])
-                                    .slice(0, 2)
-                                    .join('')}
-                            </div>
-                            <div className='min-w-0'>
-                                <p className='truncate text-[14px] font-semibold text-[#222937] dark:text-[#e9eef8]'>{name}</p>
-                                <p className='truncate text-[12px] text-[#7a8090] dark:text-[#9da9bc]'>{handle}</p>
-                            </div>
-                        </div>
-
-                        <Button size='sm' className='h-8 rounded-full bg-[#5b4fe8] px-3 text-[12px] font-medium text-white hover:bg-[#4f43d8]'>
-                            Follow
-                        </Button>
-                    </div>
+                    <Suggestion key={handle} name={name} handle={handle} accent={accent} />
                 ))}
             </div>
 
@@ -53,7 +35,7 @@ export default function ProfilePage() {
 
     return (
         <AppShell activeItem='Profile' rightAside={rightAside}>
-            <div className='h-full overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
+            <div className='h-full overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
                 <div className='mx-auto max-w-190 px-4 py-4 sm:px-5 lg:px-0 lg:py-6'>
                     <div className='overflow-hidden rounded-[22px] border border-[#e6e9ee] bg-[#f7f8fb] dark:border-[#303a4c] dark:bg-[#1b2330]'>
                         <div className='relative border-b border-[#e6e9ee] bg-[#f4f6fb] p-0'>

@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { EyeOff, Sparkles } from 'lucide-react'
+import CustomInput from '@/components/CustomInput/CustomInput'
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import Image from 'next/image'
 import Link from 'next/link'
 import signUpImage from '@/assests/photo-1516321318423-f06f85e504b3.avif'
@@ -46,60 +48,19 @@ export default function SignUpPage() {
 
                 <section className='flex flex-1 items-center justify-center bg-[#f7f7f7] px-5 py-8 dark:bg-[#171d29] sm:px-8 lg:px-10'>
                     <div className='w-full max-w-110'>
-                        <div className='mb-7'>
+                        <div className='mb-7 flex items-start justify-between gap-4'>
                             <h2 className='text-4xl font-semibold tracking-tighter text-[#1b1d20] dark:text-[#f1f4fb]'>Create your account</h2>
+                            <ThemeToggle compact />
                         </div>
 
                         <form className='space-y-4'>
                             <div className='grid gap-4 sm:grid-cols-2'>
-                                <div className='space-y-2'>
-                                    <label htmlFor='firstName' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                        First name
-                                    </label>
-                                    <input
-                                        id='firstName'
-                                        type='text'
-                                        placeholder='First name'
-                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                    />
-                                </div>
-
-                                <div className='space-y-2'>
-                                    <label htmlFor='lastName' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                        Last name
-                                    </label>
-                                    <input
-                                        id='lastName'
-                                        type='text'
-                                        placeholder='Last name'
-                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                    />
-                                </div>
+                                <CustomInput id='firstName' label='First name' placeholder='First name' autoComplete='given-name' />
+                                <CustomInput id='lastName' label='Last name' placeholder='Last name' autoComplete='family-name' />
                             </div>
 
-                            <div className='space-y-2'>
-                                <label htmlFor='email' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                    Email
-                                </label>
-                                <input
-                                    id='email'
-                                    type='email'
-                                    placeholder='name@example.com'
-                                    className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                />
-                            </div>
-
-                            <div className='space-y-2'>
-                                <label htmlFor='username' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                    Username
-                                </label>
-                                <input
-                                    id='username'
-                                    type='text'
-                                    placeholder='Choose a username'
-                                    className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                />
-                            </div>
+                            <CustomInput id='email' label='Email' type='email' placeholder='name@example.com' autoComplete='email' />
+                            <CustomInput id='username' label='Username' placeholder='Choose a username' autoComplete='username' />
 
                             <div className='space-y-2'>
                                 <label htmlFor='password' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>

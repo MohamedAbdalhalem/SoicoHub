@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { AppShell } from '@/components/app-shell'
 import { Button } from '@/components/ui/button'
+import Suggestion from '@/components/Suggestion/Suggestion'
 import {
   AtSign,
   ArrowLeft,
@@ -30,7 +31,7 @@ export default function CreatePostPage() {
   const charCount = text.length
 
   return (
-    <AppShell activeItem='Home'>
+    <AppShell activeItem='Create Post'>
       <div className='h-full overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
         <div className='mx-auto hidden max-w-245 px-4 py-6 lg:block'>
           <div className='rounded-[28px] border border-[#e8ebf0] bg-[#f8f9fb] p-5 shadow-[0_10px_32px_rgba(17,24,39,0.04)] dark:border-[#303a4c] dark:bg-[#1b2330]'>
@@ -60,25 +61,7 @@ export default function CreatePostPage() {
 
                 <div className='space-y-3'>
                   {suggestions.map(({ name, handle, accent }) => (
-                    <div key={name} className='flex items-center justify-between gap-3 rounded-xl px-2 py-1.5'>
-                      <div className='flex items-center gap-3'>
-                        <div className={`flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br ${accent} text-[10px] font-bold text-[#1f2937]`}>
-                          {name
-                            .split(' ')
-                            .map((part) => part[0])
-                            .slice(0, 2)
-                            .join('')}
-                        </div>
-                        <div>
-                          <p className='text-[15px] font-semibold text-[#1d2430] dark:text-[#e9eef8]'>{name}</p>
-                          <p className='text-[12px] text-[#7a8392] dark:text-[#9da9bc]'>{handle}</p>
-                        </div>
-                      </div>
-
-                      <button type='button' className='rounded-full bg-[#5b4fe8] px-2.5 py-1 text-[10px] font-medium text-white'>
-                        Add
-                      </button>
-                    </div>
+                    <Suggestion key={name} name={name} handle={handle} accent={accent} actionLabel='Add' />
                   ))}
                 </div>
               </div>

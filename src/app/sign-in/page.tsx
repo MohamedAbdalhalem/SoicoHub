@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button'
 import {  EyeOff, Sparkles } from 'lucide-react'
+import CustomInput from '@/components/CustomInput/CustomInput'
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import Image from 'next/image'
 import Link from 'next/link'
 import siginImage from '@/assests/photo-1516321318423-f06f85e504b3.avif'
@@ -58,20 +60,11 @@ export default function SignInPage() {
                                 <h2 className='text-4xl font-semibold tracking-tighter text-[#1b1d20] dark:text-[#f1f4fb]'>Sign in</h2>
                                 <p className='text-base text-muted-foreground'>Enter your credentials to continue.</p>
                             </div>
+                            <ThemeToggle compact />
                         </div>
 
                         <form className='space-y-5'>
-                            <div className='space-y-2'>
-                                <label htmlFor='email' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                    Email or username
-                                </label>
-                                <input
-                                    id='email'
-                                    type='email'
-                                    defaultValue='aria@example.com'
-                                    className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb]'
-                                />
-                            </div>
+                            <CustomInput id='email' label='Email or username' type='text' defaultValue='aria@example.com' autoComplete='username' />
 
                             <div className='space-y-2'>
                                 <div className='flex items-center justify-between'>

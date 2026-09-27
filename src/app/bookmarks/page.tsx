@@ -1,16 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import { AppShell } from '@/components/app-shell'
-import { Button } from '@/components/ui/button'
-import {
-  Bookmark,
-  Heart,
-  MessageCircle,
-  MoreHorizontal,
-  Repeat2,
-  Search,
-} from 'lucide-react'
+import Suggestion from '@/components/Suggestion/Suggestion'
+import { Search } from 'lucide-react'
+import Post from '@/components/Post/Post'
 
 const suggestions = [
   { name: 'Rohan Mehta', handle: '@rohan_m', accent: 'from-[#f4c7b8] to-[#d9b2ff]' },
@@ -60,28 +53,13 @@ const savedPosts = [
 ]
 
 export default function BookmarksPage() {
-  const [bookmarks, setBookmarks] = useState(savedPosts)
-
   const rightAside = (
     <>
       <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
         <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
         <div className='space-y-3'>
           {suggestions.map(({ name, handle, accent }) => (
-            <div key={name} className='flex items-center justify-between gap-3'>
-              <div className='flex items-center gap-3'>
-                <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br ${accent} text-[10px] font-bold text-[#1f2937]`}>
-                  {name.split(' ').map((part) => part[0]).slice(0, 2).join('')}
-                </div>
-                <div className='min-w-0'>
-                  <p className='truncate text-[14px] font-semibold text-[#222937] dark:text-[#e9eef8]'>{name}</p>
-                  <p className='truncate text-[12px] text-[#7a8090] dark:text-[#9da9bc]'>{handle}</p>
-                </div>
-              </div>
-              <Button size='sm' className='h-8 rounded-full bg-[#5b4fe8] px-3 text-[12px] font-medium text-white hover:bg-[#4f43d8]'>
-                Follow
-              </Button>
-            </div>
+            <Suggestion key={handle} name={name} handle={handle} accent={accent} />
           ))}
         </div>
         <button type='button' className='mt-4 text-[13px] font-medium text-[#5b4fe8]'>Show more</button>
@@ -96,7 +74,7 @@ export default function BookmarksPage() {
 
   return (
     <AppShell activeItem='Bookmarks' rightAside={rightAside}>
-      <div className='h-full overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
+      <div className='h-full overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
         <div className='mx-auto max-w-190 px-4 py-5 sm:px-5 lg:px-0 lg:py-6'>
           <div className='mb-5 flex items-start justify-between gap-4'>
             <div>
@@ -114,47 +92,10 @@ export default function BookmarksPage() {
             <button type='button' className='flex-1 text-center text-[15px] font-medium text-[#727c8d]'>Media</button>
           </div>
 
-          {bookmarks.length ? (
-            <div className='space-y-4'>
-              {bookmarks.map((post) => (
-                <article key={post.id} className='rounded-[20px] border border-[#e5e8ee] bg-[#f7f8fb] p-4 shadow-[0_1px_0_rgba(17,24,39,0.02)] dark:border-[#303a4c] dark:bg-[#1b2330]'>
-                  <div className='mb-3 flex items-start justify-between gap-3'>
-                    <div className='flex items-center gap-3'>
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br ${post.accent} text-[11px] font-bold text-[#1f2937]`}>{post.avatar}</div>
-                      <div className='leading-tight'>
-                        <div className='flex flex-wrap items-center gap-2 text-[15px] font-semibold text-[#1d2430] dark:text-[#e9eef8]'>
-                          <span>{post.author}</span><span className='text-[#7b8393] dark:text-[#9da9bc]'>{post.handle}</span><span className='text-[#7b8393] dark:text-[#9da9bc]'>•</span><span className='text-[#7b8393] dark:text-[#9da9bc]'>{post.time}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <button type='button' aria-label={`More options for ${post.author}`} className='flex h-8 w-8 items-center justify-center rounded-full text-[#7a8190] hover:bg-white dark:text-[#9da9bc] dark:hover:bg-[#293447]'>
-                      <MoreHorizontal className='h-4 w-4' />
-                    </button>
-                  </div>
-
-                  <p className='text-[15px] leading-relaxed text-[#2d3746] dark:text-[#d4dce9]'>{post.text}</p>
-                  {post.image ? <div className='mt-4 overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white dark:border-[#303a4c] dark:bg-[#202838]'><img src={post.image} alt={`${post.author} post`} className='h-60 w-full object-cover sm:h-72' /></div> : null}
-
-                  <div className='mt-4 flex items-center justify-between gap-3 pr-1 text-[#6a7280]'>
-                    <div className='flex items-center gap-5'>
-                      <button type='button' className='flex items-center gap-2 text-[14px]'><Heart className='h-4 w-4' /><span>{post.likes}</span></button>
-                      <button type='button' className='flex items-center gap-2 text-[14px]'><MessageCircle className='h-4 w-4' /><span>{post.comments}</span></button>
-                      <button type='button' className='flex items-center gap-2 text-[14px]'><Repeat2 className='h-4 w-4' /><span>{post.reposts}</span></button>
-                    </div>
-                    <button type='button' onClick={() => setBookmarks((current) => current.filter((item) => item.id !== post.id))} aria-label={`Remove ${post.author}'s post from bookmarks`} className='flex items-center gap-2 text-[14px] text-[#5b4fe8] hover:text-[#4438c9]'>
-                      <Bookmark className='h-4 w-4 fill-current' /><span>Saved</span>
-                    </button>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className='rounded-[20px] border border-dashed border-[#d9dee7] bg-[#f7f8fb] px-6 py-16 text-center dark:border-[#3a465a] dark:bg-[#1b2330]'>
-              <div className='mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e8e7ff] text-[#5b4fe8] dark:bg-[#302c63]'><Bookmark className='h-6 w-6' /></div>
-              <h2 className='mt-4 text-[20px] font-semibold text-[#252b37] dark:text-[#f1f4fb]'>Your bookmarks are clear</h2>
-              <p className='mx-auto mt-2 max-w-sm text-[14px] leading-6 text-[#737d8d] dark:text-[#aeb8ca]'>Save posts from your feed and they will show up here when you are ready to revisit them.</p>
-            </div>
-          )}
+          
+          <div className='space-y-4'>
+            {savedPosts.map(({ id, ...post }) => <Post key={id} {...post} />)}
+          </div>
         </div>
       </div>
     </AppShell>
