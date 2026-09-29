@@ -1,15 +1,13 @@
-import { Button } from '@/components/ui/button'
-import { EyeOff, Sparkles } from 'lucide-react'
-import CustomInput from '@/components/CustomInput/CustomInput'
+import { Sparkles } from 'lucide-react'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import Image from 'next/image'
-import Link from 'next/link'
 import signUpImage from '@/assests/photo-1516321318423-f06f85e504b3.avif'
+import SignupForm from '@/components/SignpForm/SignupForm'
 
 export default function SignUpPage() {
     return (
-        <main className='flex min-h-screen items-center justify-center bg-[#f5f5f5] p-4 dark:bg-[#10151f] sm:p-6 lg:p-8'>
-            <div className='flex h-190 w-full max-w-310 overflow-hidden rounded-[30px] border border-border bg-white shadow-[0_30px_90px_rgba(17,24,39,0.12)] dark:bg-[#171d29] dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]'>
+        <main className='flex min-h-screen items-center justify-center bg-[#f5f5f5] p-3 dark:bg-[#10151f] sm:p-6 lg:p-8'>
+            <div className='flex h-auto min-h-[calc(100dvh-1.5rem)] w-full max-w-310 overflow-hidden rounded-[24px] border border-border bg-white shadow-[0_30px_90px_rgba(17,24,39,0.12)] dark:bg-[#171d29] dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)] sm:rounded-[30px] lg:h-190 lg:min-h-0'>
                 <section className='relative hidden w-[52%] overflow-hidden bg-[#0d2bb8] lg:block'>
                     <div
                         className='absolute inset-0 bg-cover bg-center opacity-90'
@@ -46,77 +44,14 @@ export default function SignUpPage() {
                     </div>
                 </section>
 
-                <section className='flex flex-1 items-center justify-center bg-[#f7f7f7] px-5 py-8 dark:bg-[#171d29] sm:px-8 lg:px-10'>
+                <section className='flex flex-1 items-center justify-center bg-[#f7f7f7] px-4 py-6 dark:bg-[#171d29] sm:px-8 sm:py-8 lg:px-10'>
                     <div className='w-full max-w-110'>
-                        <div className='mb-7 flex items-start justify-between gap-4'>
-                            <h2 className='text-4xl font-semibold tracking-tighter text-[#1b1d20] dark:text-[#f1f4fb]'>Create your account</h2>
+                        <div className='mb-5 flex items-start justify-between gap-3 sm:mb-7 sm:gap-4'>
+                            <h2 className='text-2xl leading-tight font-semibold tracking-tighter text-[#1b1d20] dark:text-[#f1f4fb] sm:text-4xl'>Create your account</h2>
                             <ThemeToggle compact />
                         </div>
 
-                        <form className='space-y-4'>
-                            <div className='grid gap-4 sm:grid-cols-2'>
-                                <CustomInput id='firstName' label='First name' placeholder='First name' autoComplete='given-name' />
-                                <CustomInput id='lastName' label='Last name' placeholder='Last name' autoComplete='family-name' />
-                            </div>
-
-                            <CustomInput id='email' label='Email' type='email' placeholder='name@example.com' autoComplete='email' />
-                            <CustomInput id='username' label='Username' placeholder='Choose a username' autoComplete='username' />
-
-                            <div className='space-y-2'>
-                                <label htmlFor='password' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                    Password
-                                </label>
-                                <div className='relative'>
-                                    <input
-                                        id='password'
-                                        type='password'
-                                        placeholder='Enter password'
-                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 pr-11 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                    />
-                                    <button
-                                        type='button'
-                                        aria-label='Toggle password visibility'
-                                        className='absolute inset-y-0 right-3 flex items-center text-[#6b7280] transition hover:text-[#374151]'
-                                    >
-                                        <EyeOff className='h-4 w-4' />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <Button
-                                type='submit'
-                                className='h-12 w-full rounded-xl bg-[#4e3ef0] text-base font-semibold text-white shadow-[0_10px_20px_rgba(78,62,240,0.25)] hover:bg-[#4739db]'
-                            >
-                                Create account
-                            </Button>
-
-                            <div className='relative my-3'>
-                                <div className='absolute inset-0 flex items-center'>
-                                    <div className='w-full border-t border-[#dfe4ea]' />
-                                </div>
-                                <div className='relative flex justify-center'>
-                                    <span className='bg-[#f7f7f7] px-4 text-sm text-[#6b7280] dark:bg-[#171d29] dark:text-[#aeb8ca]'>or</span>
-                                </div>
-                            </div>
-
-                            <Button
-                                type='button'
-                                variant='outline'
-                                className='h-12 w-full rounded-xl border border-[#dfe4ea] bg-white text-base font-medium text-[#1b1d20] hover:bg-[#f3f5f9] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:hover:bg-[#293447]'
-                            >
-                                <span className='mr-3 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-[#1f2937]'>
-                                    G
-                                </span>
-                                Continue with Google
-                            </Button>
-
-                            <p className='mt-6 text-center text-base text-[#39404a] dark:text-[#c3ccda]'>
-                                Already have an account?{' '}
-                                <Link href='/sign-in' className='font-medium text-[#4d62ff] hover:underline'>
-                                    Sign In
-                                </Link>
-                            </p>
-                        </form>
+                        <SignupForm />
                     </div>
                 </section>
             </div>

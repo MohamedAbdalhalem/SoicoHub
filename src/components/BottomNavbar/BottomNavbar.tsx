@@ -6,7 +6,7 @@ import {
   PlusSquare,
   UserRound,
 } from 'lucide-react'
-import type { ActiveNavItem } from '@/components/app-shell'
+import type { ActiveNavItem } from '@/components/ui/app-shell'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import SettingsMenu from './SettingsMenu'
 

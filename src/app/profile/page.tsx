@@ -1,4 +1,4 @@
-import { AppShell } from '@/components/app-shell'
+import { AppShell } from '@/components/ui/app-shell'
 import Suggestion from '@/components/Suggestion/Suggestion'
 import { Camera, PencilLine, MapPin, CalendarDays } from 'lucide-react'
 

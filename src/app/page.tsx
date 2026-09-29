@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Bell, Sparkles } from 'lucide-react'
-import { AppShell } from '@/components/app-shell'
+import { AppShell } from '@/components/ui/app-shell'
 import CustomInput from '@/components/CustomInput/CustomInput'
 import Post from '@/components/Post/Post'
 

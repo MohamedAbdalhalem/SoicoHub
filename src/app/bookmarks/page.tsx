@@ -1,6 +1,4 @@
-'use client'
-
-import { AppShell } from '@/components/app-shell'
+import { AppShell } from '@/components/ui/app-shell'
 import Suggestion from '@/components/Suggestion/Suggestion'
 import { Search } from 'lucide-react'
 import Post from '@/components/Post/Post'

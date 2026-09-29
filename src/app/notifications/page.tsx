@@ -1,4 +1,4 @@
-import { AppShell } from '@/components/app-shell'
+import { AppShell } from '@/components/ui/app-shell'
 import Notification from '@/components/Notification/Notification'
 import Suggestion from '@/components/Suggestion/Suggestion'
 

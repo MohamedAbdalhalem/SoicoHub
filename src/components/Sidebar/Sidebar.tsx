@@ -13,7 +13,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { Button } from '../ui/button'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
-import type { ActiveNavItem } from '@/components/app-shell'
+import type { ActiveNavItem } from '@/components/ui/app-shell'
 
 const navItems: Array<{ label: ActiveNavItem; icon: LucideIcon; href: string; badge?: number }> = [
     { label: 'Home', icon: House, href: '/' },

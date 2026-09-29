@@ -1,14 +1,11 @@
-'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { AppShell } from '@/components/app-shell'
+import { AppShell } from '@/components/ui/app-shell'
 import { Button } from '@/components/ui/button'
 import Suggestion from '@/components/Suggestion/Suggestion'
 import {
   AtSign,
   ArrowLeft,
-  Camera,
   Hash,
   Image as ImageIcon,
   Smile,
@@ -24,10 +21,10 @@ const suggestions = [
 const previewImage =
   'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'
 
-export default function CreatePostPage() {
-  const [text, setText] = useState('')
-  const [selectedImage, setSelectedImage] = useState(previewImage)
+const text = "What's on your route today? Use @ to mention someone..."
+const selectedImage = previewImage
 
+export default function CreatePostPage() {
   const charCount = text.length
 
   return (
@@ -51,7 +48,7 @@ export default function CreatePostPage() {
               <textarea
                 aria-label='Create post'
                 value={text}
-                onChange={(event) => setText(event.target.value.slice(0, 280))}
+                readOnly
                 placeholder="What's on your route today? Use @ to mention someone..."
                 className='mt-4 h-30 w-full resize-none border-0 bg-transparent text-[18px] text-[#2f3745] placeholder:text-[#8892a1] focus:outline-none dark:text-[#e3e9f3] dark:placeholder:text-[#8995aa]'
               />
@@ -66,18 +63,16 @@ export default function CreatePostPage() {
                 </div>
               </div>
 
-              {selectedImage ? (
-                <div className='relative mt-4 overflow-hidden rounded-[20px] border border-[#e5e8ee] dark:border-[#354154]'>
-                  <img src={selectedImage} alt='Selected post media' className='h-55 w-full object-cover' />
-                  <button
-                    type='button'
-                    onClick={() => setSelectedImage('')}
-                    className='absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#171b22] text-white shadow-lg'
-                  >
-                    <X className='h-4 w-4' />
-                  </button>
-                </div>
-              ) : null}
+              <div className='relative mt-4 overflow-hidden rounded-[20px] border border-[#e5e8ee] dark:border-[#354154]'>
+                <img src={selectedImage} alt='Selected post media' className='h-55 w-full object-cover' />
+                <button
+                  type='button'
+                  className='absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#171b22] text-white shadow-lg'
+                  aria-label='Remove selected image'
+                >
+                  <X className='h-4 w-4' />
+                </button>
+              </div>
 
               <div className='mt-5 flex items-center justify-between gap-4'>
                 <div className='flex items-center gap-4 text-[#667084]'>
@@ -126,7 +121,7 @@ export default function CreatePostPage() {
               <textarea
                 aria-label='Create post'
                 value={text}
-                onChange={(event) => setText(event.target.value.slice(0, 280))}
+                readOnly
                 placeholder="What's on your route today?"
                 className='mt-3 h-30 w-full resize-none border-0 bg-transparent text-[26px] font-light leading-tight text-[#2f3745] placeholder:text-[#8d93a0] focus:outline-none dark:text-[#e3e9f3] dark:placeholder:text-[#8995aa]'
               />
@@ -138,25 +133,16 @@ export default function CreatePostPage() {
           </div>
 
           <div className='mt-4 rounded-[20px] border-2 border-dashed border-[#d8dde6] bg-[#f6f7fb] p-6 dark:border-[#3a465a] dark:bg-[#1b2330]'>
-            {selectedImage ? (
-              <div className='relative overflow-hidden rounded-[18px]'>
-                <img src={selectedImage} alt='Post preview' className='h-55 w-full rounded-[18px] object-cover' />
-                <button
-                  type='button'
-                  onClick={() => setSelectedImage('')}
-                  className='absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#171b22] text-white shadow-lg'
-                >
-                  <X className='h-4 w-4' />
-                </button>
-              </div>
-            ) : (
-              <div className='flex min-h-50 flex-col items-center justify-center text-center text-[#7a8392] dark:text-[#aeb8ca]'>
-                <div className='mb-4 flex h-14 w-14 items-center justify-center rounded-[18px] border border-[#dfe3eb] bg-white text-[#6a7688] dark:border-[#354154] dark:bg-[#202838] dark:text-[#b7c1d1]'>
-                  <Camera className='h-7 w-7' />
-                </div>
-                <div className='text-[22px] font-medium text-[#2f3745] dark:text-[#dce3f0]'>Tap to add a photo or video</div>
-              </div>
-            )}
+            <div className='relative overflow-hidden rounded-[18px]'>
+              <img src={selectedImage} alt='Post preview' className='h-55 w-full rounded-[18px] object-cover' />
+              <button
+                type='button'
+                className='absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#171b22] text-white shadow-lg'
+                aria-label='Remove selected image'
+              >
+                <X className='h-4 w-4' />
+              </button>
+            </div>
           </div>
 
           <div className='mt-6 flex items-center justify-between border-t border-[#dfe4eb] pt-4 dark:border-[#303a4c]'>
