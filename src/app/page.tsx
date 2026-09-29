@@ -24,6 +24,7 @@ export default function Home() {
                 type='search'
                 placeholder='Search Route Posts'
                 className='h-9 max-w-64 text-sm'
+                name='search'
               />
               <Link href='/notifications' aria-label='Notifications' className='flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#5b6472] ring-1 ring-[#e5e7eb] dark:bg-[#202838] dark:text-[#b7c1d1] dark:ring-[#354154]'>
                 <Bell className='h-4 w-4' />
