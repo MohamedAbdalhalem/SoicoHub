@@ -4,7 +4,6 @@ import {
     Bookmark,
     House,
     Plus,
-    PlusSquare,
     Sparkles,
     UserRound,
     LogIn,

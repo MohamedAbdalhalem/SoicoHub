@@ -64,7 +64,7 @@ export default function SignInPage() {
                         </div>
 
                         <form className='space-y-5'>
-                            <CustomInput id='email' label='Email or username' type='text' defaultValue='aria@example.com' autoComplete='username' />
+                            <CustomInput id='email' label='Email or username' type='text'   name='email' placeholder='your email please' />
 
                             <div className='space-y-2'>
                                 <div className='flex items-center justify-between'>
