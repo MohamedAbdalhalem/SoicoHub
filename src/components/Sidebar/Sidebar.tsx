@@ -70,10 +70,10 @@ export default function Sidebar({ activeItem }: { activeItem: ActiveNavItem }) {
                     <LogIn className='h-4 w-4' />
                     Sign in
                 </Link>
-                <Link href='/sign-up' className='flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium text-[#2f3742] transition hover:bg-[#eceef9] dark:text-[#d8deeb] dark:hover:bg-[#222b3b]'>
+                <p  className='flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium text-[#2f3742] transition hover:bg-[#eceef9] dark:text-[#d8deeb] dark:hover:bg-[#222b3b] cursor-pointer'>
                     <UserPlus className='h-4 w-4' />
                     Sign up
-                </Link>
+                </p>
             </div>
 
             <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5 dark:border-[#293242] dark:bg-[#202838]'>

@@ -4,20 +4,38 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 import { signupAction } from '@/lib/action'
 import { useActionState } from 'react'
+import SubmitButton from '../SubmitButton/SubmitButton'
 
 export default function SignupForm() {
-    const  [actionState , formAction] =  useActionState(signupAction, {errors : null})
+    const [actionState, formAction] = useActionState(signupAction, { errors: null })
     return (
-        <form action={formAction} className='w-full space-y-4 pb-2'>
+        <form action={formAction} className='w-full space-y-1 pb-2'>
+            {actionState.userExists && (
+                <div
+                    role='alert'
+                    className='mb-4 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/70 dark:bg-red-950/40 dark:text-red-200'
+                >
+                    <span aria-hidden='true' className='mt-0.5 font-semibold'>!</span>
+                    <p>{actionState.userExists}</p>
+                </div>
+            )}
             <div className='grid gap-4 sm:grid-cols-2'>
-                <CustomInput id='name' label='Name' placeholder='Your Name' type='text' name='Name' />
-                <CustomInput id='userName' label='User Name' placeholder='User Name' type='text' name='userName' />
+                <CustomInput id='name' label='Name' placeholder='Your Name' type='text' name='Name'
+                    errorMassage={actionState?.errors && actionState.errors.nameError}
+                    defaultValue={actionState?.savedValues?.yourName} />
+                <CustomInput id='userName' label='User Name' placeholder='User Name' type='text' name='userName'
+                    errorMassage={actionState?.errors && actionState.errors.userNameError}
+                    defaultValue={actionState?.savedValues?.userName} />
             </div>
 
-            <CustomInput id='email' label='Email' type='email' placeholder='name@example.com' name='email' />
+            <CustomInput id='email' label='Email' type='email' placeholder='name@example.com' name='email'
+                errorMassage={actionState?.errors && actionState.errors.emailError}
+                defaultValue={actionState?.savedValues?.email} />
 
             <div className='grid gap-4 sm:grid-cols-2'>
-                <CustomInput id='Date' label='Date Of Birth' placeholder='your birth' type='date' name='date' />
+                <CustomInput id='Date' label='Date Of Birth' placeholder='your birth' type='date' name='date'
+                    errorMassage={actionState?.errors && actionState.errors.dateError}
+                    defaultValue={actionState?.savedValues?.date} />
                 <div className='space-y-0.5'>
                     <label htmlFor='gender' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
                         Gender
@@ -25,6 +43,7 @@ export default function SignupForm() {
                     <select
                         name='gender'
                         id='gender'
+                        defaultValue={actionState?.errors && actionState?.savedValues?.gender}
                         className='flex h-10 w-full appearance-none rounded-xl border border-[#d9dfe7] bg-white px-3.5 pr-10 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb]'
                     >
                         <option value='male' className='text-[#111827] dark:text-[#f1f4fb]'>Male</option>
@@ -34,16 +53,15 @@ export default function SignupForm() {
             </div>
 
             <div className='space-y-2'>
-                <CustomInput id='password' label='Password' type='password' placeholder='your password' name='password' />
-                <CustomInput id='repassword' label='Confirm Password' type='password' placeholder='confirm your password' name='repassword' />
+                <CustomInput id='password' label='Password' type='password' placeholder='your password' name='password' 
+                errorMassage={actionState?.errors && actionState.errors.passwordError} 
+                defaultValue={actionState?.savedValues?.password } />
+                <CustomInput id='repassword' label='Confirm Password' type='password' placeholder='confirm your password' name='repassword' 
+                errorMassage={actionState?.errors && actionState.errors.repasswordError} 
+                defaultValue={actionState?.savedValues?.repassword } />
             </div>
 
-            <Button
-                type='submit'
-                className='h-12 w-full rounded-xl bg-[#4e3ef0] text-base font-semibold text-white shadow-[0_10px_20px_rgba(78,62,240,0.25)] hover:bg-[#4739db]'
-            >
-                Create account
-            </Button>
+            <SubmitButton/>
 
             <div className='relative my-3'>
                 <div className='absolute inset-0 flex items-center'>
