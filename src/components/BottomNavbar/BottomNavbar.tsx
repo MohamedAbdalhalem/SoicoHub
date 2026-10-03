@@ -18,7 +18,8 @@ const items = [
   { label: 'Profile', shortLabel: 'Profile', href: '/profile', icon: UserRound },
 ] as const
 
-export default function BottomNavbar({ activeItem }: { activeItem: ActiveNavItem }) {
+export default  function BottomNavbar({ activeItem }: { activeItem: ActiveNavItem }) {
+
   return (
     <nav
       aria-label='Mobile navigation'

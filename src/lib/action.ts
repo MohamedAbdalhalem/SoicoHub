@@ -103,3 +103,9 @@ export const signupAction = async function (prevState: any, formData: FormData) 
     }
     redirect('/', 'replace')
 }
+
+export const signoutAction = async function () {
+     const cookieStore = await cookies()
+    cookieStore.set('tkn', '')
+    redirect('/sign-in')
+}
