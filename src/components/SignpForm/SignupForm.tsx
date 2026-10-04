@@ -5,19 +5,14 @@ import Link from 'next/link'
 import { signupAction } from '@/lib/action'
 import { useActionState } from 'react'
 import SubmitButton from '../SubmitButton/SubmitButton'
+import AuthErrorAlert from '../AuthErrorAlert/AuthErrorAlert'
 
 export default function SignupForm() {
     const [actionState, formAction] = useActionState(signupAction, { errors: null })
     return (
         <form action={formAction} className='w-full space-y-1 pb-2'>
             {actionState.userExists && (
-                <div
-                    role='alert'
-                    className='mb-4 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/70 dark:bg-red-950/40 dark:text-red-200'
-                >
-                    <span aria-hidden='true' className='mt-0.5 font-semibold'>!</span>
-                    <p>{actionState.userExists}</p>
-                </div>
+                <AuthErrorAlert errorMassage={actionState.userExists} />
             )}
             <div className='grid gap-4 sm:grid-cols-2'>
                 <CustomInput id='name' label='Name' placeholder='Your Name' type='text' name='Name'

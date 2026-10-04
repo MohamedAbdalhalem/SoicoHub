@@ -1,10 +1,8 @@
-import { Button } from '@/components/ui/button'
-import {  EyeOff, Sparkles } from 'lucide-react'
-import CustomInput from '@/components/CustomInput/CustomInput'
+import { Sparkles } from 'lucide-react'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import Image from 'next/image'
-import Link from 'next/link'
 import siginImage from '@/assests/photo-1516321318423-f06f85e504b3.avif'
+import SignInForm from '@/components/SignInForm/SignInForm'
 
 export default function SignInPage() {
     return (
@@ -63,66 +61,7 @@ export default function SignInPage() {
                             <ThemeToggle compact />
                         </div>
 
-                        <form className='space-y-5'>
-                            <CustomInput id='email' label='Email or username' type='text'   name='email' placeholder='your email please' />
-
-                            <div className='space-y-2'>
-                                <div className='flex items-center justify-between'>
-                                    <label htmlFor='password' className='block text-sm font-medium text-[#1f2937] dark:text-[#dce3f0]'>
-                                        Password
-                                    </label>
-                                    <button type='button' className='text-sm font-medium text-[#4d62ff] hover:underline'>
-                                        Forgot password?
-                                    </button>
-                                </div>
-                                <div className='relative'>
-                                    <input
-                                        id='password'
-                                        type='password'
-                                        placeholder='Enter password'
-                                        className='flex h-12 w-full rounded-xl border border-[#d9dfe7] bg-white px-3.5 pr-11 text-base text-[#111827] shadow-sm outline-none transition focus:border-[#7a7ae8] focus:ring-2 focus:ring-[#7a7ae8]/20 placeholder:text-[#9aa3af] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:placeholder:text-[#8995aa]'
-                                    />
-                                    <button
-                                        type='button'
-                                        aria-label='Toggle password visibility'
-                                        className='absolute inset-y-0 right-3 flex items-center text-[#6b7280] transition hover:text-[#374151]'
-                                    >
-                                        <EyeOff className='h-4 w-4' />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <Button type='submit' className='h-12 w-full rounded-xl bg-[#4e3ef0] text-base font-semibold text-white shadow-[0_10px_20px_rgba(78,62,240,0.25)] hover:bg-[#4739db]'>
-                                Sign In
-                            </Button>
-
-                            <div className='relative my-4'>
-                                <div className='absolute inset-0 flex items-center'>
-                                    <div className='w-full border-t border-[#dfe4ea]' />
-                                </div>
-                                <div className='relative flex justify-center'>
-                                    <span className='bg-[#f7f7f7] px-4 text-sm text-[#6b7280] dark:bg-[#171d29] dark:text-[#aeb8ca]'>or</span>
-                                </div>
-                            </div>
-
-                            <Button
-                                type='button'
-                                variant='outline'
-                                className='h-12 w-full rounded-xl border border-[#dfe4ea] bg-white text-base font-medium text-[#1b1d20] hover:bg-[#f3f5f9] dark:border-[#354154] dark:bg-[#202838] dark:text-[#f1f4fb] dark:hover:bg-[#293447]'
-                            >
-                                <span className='mr-3 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-[#1f2937]'>
-                                    G
-                                </span>
-                                Continue with Google
-                            </Button>
-
-                            <p className='mt-6 text-center text-base text-[#39404a] dark:text-[#c3ccda]'>
-                                Don&apos;t have an account?{' '}
-                                <Link href='/sign-up' className='font-medium text-[#4d62ff] hover:underline'>
-                                    Sign Up
-                                </Link>
-                            </p>
-                        </form>
+                        <SignInForm/>
                     </div>
                 </section>
             </div>

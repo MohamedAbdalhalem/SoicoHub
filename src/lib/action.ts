@@ -82,7 +82,7 @@ export const signupAction = async function (prevState: any, formData: FormData) 
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.message || 'Signup failed');
+            throw new Error(data.message);
         }
         myCookies.set('tkn', data.data.token, {
             httpOnly: true,
@@ -104,8 +104,78 @@ export const signupAction = async function (prevState: any, formData: FormData) 
     redirect('/', 'replace')
 }
 
+export const signinAction = async function (prevState: any, formData: FormData) {
+    const myCookies = await cookies()
+    const email = formData.get('email')?.toString() || '';
+    const password = formData.get('password')?.toString() || '';
+
+    const savedValues = {
+        email,
+        password
+    }
+
+    const errors: any = {
+        emailError: null,
+        passwordErorr: null
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.emailError = 'invalid email'
+    }
+
+    if (!/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(password)) {
+        errors.passwordErorr = 'invalid password your password must have be alleast 8 char, have capital letter, small letter and one special character (#?!@$%^&*-)'
+    }
+
+    if (errors.emailError || errors.passwordErorr) {
+        return {
+            errors,
+            savedValues
+        }
+    }
+
+    try {
+        const response = await fetch('https://route-posts.routemisr.com/users/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        myCookies.set('tkn', data.data.token, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+    } catch (error) {
+        if (error) {
+            return {
+                signErrors: error instanceof Error && error.message,
+                savedValues
+            }
+        } else {
+            return {
+                errors: null
+            }
+        }
+    }
+
+    redirect('/', 'replace')
+
+}
+
 export const signoutAction = async function () {
-     const cookieStore = await cookies()
+    const cookieStore = await cookies()
     cookieStore.set('tkn', '')
     redirect('/sign-in')
 }
