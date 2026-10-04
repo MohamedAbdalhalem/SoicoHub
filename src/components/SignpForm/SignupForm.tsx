@@ -56,7 +56,7 @@ export default function SignupForm() {
                 defaultValue={actionState?.savedValues?.repassword } />
             </div>
 
-            <SubmitButton/>
+            <SubmitButton text='Create account' />
 
             <div className='relative my-3'>
                 <div className='absolute inset-0 flex items-center'>

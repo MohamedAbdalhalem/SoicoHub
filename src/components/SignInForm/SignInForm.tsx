@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useActionState } from 'react'
 import { signinAction } from '@/lib/action'
 import AuthErrorAlert from '../AuthErrorAlert/AuthErrorAlert'
+import SubmitButton from '../SubmitButton/SubmitButton'
 
 export default function SignInForm() {
     const [actionState, formAction] = useActionState(signinAction, { errors: null })
@@ -20,9 +21,7 @@ export default function SignInForm() {
                 defaultValue={actionState.savedValues?.password} />
 
 
-            <Button type='submit' className='h-12 w-full rounded-xl bg-[#4e3ef0] text-base font-semibold text-white shadow-[0_10px_20px_rgba(78,62,240,0.25)] hover:bg-[#4739db]'>
-                Sign In
-            </Button>
+            <SubmitButton text='Sign In' />
 
             <div className='relative my-4'>
                 <div className='absolute inset-0 flex items-center'>
