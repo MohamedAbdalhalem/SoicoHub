@@ -1,11 +1,25 @@
 export type postType = {
-    body: string,
-    id: string,
-    image: string,
-    user: userType
-    comments: commentType[],
+    _id: string
+    body: string
+    privacy: string
+    user: {
+        _id: string
+        name: string
+        username: string
+        photo: string
+    }
+    sharedPost: unknown | null
+    likes: string[]
     createdAt: string
+    commentsCount: number
+    topComment: unknown | null
+    sharesCount: number
+    likesCount: number
+    isShare: boolean
+    id: string
+    bookmarked: boolean
 }
+
 export type userType = {
     name: string,
     photo: string,
@@ -25,3 +39,5 @@ export type userDataType = {
     photo: string,
     _id: string
 }
+
+

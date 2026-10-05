@@ -2,9 +2,50 @@ import Link from 'next/link'
 import { Bell, Sparkles } from 'lucide-react'
 import { AppShell } from '@/components/ui/app-shell'
 import CustomInput from '@/components/CustomInput/CustomInput'
+import { cookies } from 'next/headers'
 import Post from '@/components/Post/Post'
+import PostsLoadingScreen from '@/components/PostsLoadingScreen/PostsLoadingScreen'
+import { postType } from './types'
+import { Suspense } from 'react'
 
-export default function Home() {
+async function Posts() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get('tkn')?.value
+  const response = await fetch(`https://route-posts.routemisr.com/posts?limit=10`, {
+    headers: {
+      token: token || '',
+    },
+  })
+  const data = (await response.json()) as { data: { posts: postType[] } }
+
+
+  if (!response.ok) {
+    return (
+      <div className='flex flex-col items-center justify-center rounded-[20px] border border-[#e5e8ee] bg-[#f7f8fb] px-6 py-12 text-center dark:border-[#303a4c] dark:bg-[#1b2330]'>
+            <div className='mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-500 dark:bg-red-950/30'>
+                <span className='text-xl font-semibold'>!</span>
+            </div>
+
+            <h3 className='font-semibold text-[#1d2430] dark:text-[#e9eef8]'>
+                Something went wrong
+            </h3>
+
+            <p className='mt-1 max-w-xs text-sm text-[#7b8393] dark:text-[#9da9bc]'>
+                We couldn't load the posts at the moment.
+            </p>
+        </div>
+    )
+  }
+
+  return (
+    <div className='space-y-4'>
+      {data.data.posts.map(post => <Post key={post._id} post={post} />)}
+    </div>
+  )
+}
+
+export default async function Home() {
+
   return (
     <AppShell activeItem='Home'>
       <div className='h-full overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
@@ -38,10 +79,7 @@ export default function Home() {
             <button type='button' className='flex-1 text-center text-[15px] font-semibold text-[#5b4fe8] underline decoration-[#5b4fe8] decoration-2 underline-offset-12'>For You</button>
             <button type='button' className='flex-1 text-center text-[15px] font-medium text-[#6f7786] dark:text-[#aeb8ca]'>Following</button>
           </div>
-          <div className='space-y-4'>
-            <Post />
-            <Post />
-          </div>
+          <Suspense fallback={<PostsLoadingScreen />} > <Posts /> </Suspense>
         </div>
       </div>
     </AppShell>

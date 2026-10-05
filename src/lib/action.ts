@@ -1,4 +1,5 @@
 "use server"
+import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
@@ -101,6 +102,7 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             }
         }
     }
+    revalidatePath('/')
     redirect('/', 'replace')
 }
 
@@ -169,7 +171,7 @@ export const signinAction = async function (prevState: any, formData: FormData) 
             }
         }
     }
-
+    revalidatePath('/')
     redirect('/', 'replace')
 
 }
