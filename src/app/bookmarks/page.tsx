@@ -1,7 +1,7 @@
 import { AppShell } from '@/components/ui/app-shell'
 import Suggestion from '@/components/Suggestion/Suggestion'
 import { Search } from 'lucide-react'
-import Post from '@/components/Post/Post'
+// import Post from '@/components/Post/Post'
 
 const suggestions = [
   { name: 'Rohan Mehta', handle: '@rohan_m', accent: 'from-[#f4c7b8] to-[#d9b2ff]' },
@@ -91,9 +91,9 @@ export default function BookmarksPage() {
           </div>
 
           
-          <div className='space-y-4'>
+          {/* <div className='space-y-4'>
             {savedPosts.map(({ id, ...post }) => <Post key={id} {...post} />)}
-          </div>
+          </div> */}
         </div>
       </div>
     </AppShell>
