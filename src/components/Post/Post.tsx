@@ -1,21 +1,24 @@
 import { postType } from '@/app/types'
 import {
     Archive,
-    Heart,
     MessageCircle,
     MoreHorizontal,
     Repeat2,
 } from 'lucide-react'
+import LikeButton from '../LikeButton/LikeButton'
+import { cookies } from 'next/headers'
+import { jwtDecode } from "jwt-decode";
 
 
-
-
-export default function Post({post} : {post : postType}) {
+export default async function Post({post} : {post : postType}) {
     const time = new Date(post.createdAt).toLocaleString('en', {
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
     })
+    const cookieStore = await cookies()
+    const token = cookieStore.get('tkn')?.value
+    const { user } = jwtDecode<{ user: string }>(token || '');
 
     return (
         <article className='rounded-[20px] border border-[#e5e8ee] bg-[#f7f8fb] p-4 shadow-[0_1px_0_rgba(17,24,39,0.02)] dark:border-[#303a4c] dark:bg-[#1b2330]'>
@@ -67,13 +70,7 @@ export default function Post({post} : {post : postType}) {
 
                 <div className='flex items-center gap-5'>
 
-                    <button
-                        type='button'
-                        className='flex items-center gap-2 text-[14px] transition-colors hover:text-red-500'
-                    >
-                        <Heart className='h-4 w-4' />
-                        <span>{post.likesCount}</span>
-                    </button>
+                    <LikeButton likesCount={post.likesCount} postId={post._id} likes={post.likes} user={user} />
 
                     <button
                         type='button'

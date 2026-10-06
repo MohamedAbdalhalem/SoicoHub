@@ -86,7 +86,6 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             throw new Error(data.message);
         }
         myCookies.set('tkn', data.data.token, {
-            httpOnly: true,
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
@@ -155,7 +154,6 @@ export const signinAction = async function (prevState: any, formData: FormData) 
         }
 
         myCookies.set('tkn', data.data.token, {
-            httpOnly: true,
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
@@ -180,4 +178,19 @@ export const signoutAction = async function () {
     const cookieStore = await cookies()
     cookieStore.set('tkn', '')
     redirect('/sign-in')
+}
+
+export const toggleLikeAction = async function (postId : string) {
+    const myCookies = await cookies()
+    const res = await fetch(`https://route-posts.routemisr.com/posts/${postId}/like`, {
+        method: "PUT",
+        headers: {
+            token: myCookies.get('tkn')?.value || ''
+        }
+    })
+    revalidatePath('/')
+    revalidatePath('/bookmarks')
+    if(!res.ok){
+        throw new Error('fiald to like this post')
+    }
 }

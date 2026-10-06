@@ -1,7 +1,6 @@
 import { AppShell } from '@/components/ui/app-shell'
 import Suggestion from '@/components/Suggestion/Suggestion'
 import { Search } from 'lucide-react'
-// import Post from '@/components/Post/Post'
 
 const suggestions = [
   { name: 'Rohan Mehta', handle: '@rohan_m', accent: 'from-[#f4c7b8] to-[#d9b2ff]' },
@@ -9,46 +8,7 @@ const suggestions = [
   { name: 'Lukas Werner', handle: '@lukas_w', accent: 'from-[#f9d7a7] to-[#f0b4d5]' },
 ]
 
-const savedPosts = [
-  {
-    id: 'design-systems',
-    author: 'Maya Patel',
-    handle: '@maya_design',
-    time: 'Yesterday',
-    text: 'A good design system gives teams a shared language, not a cage. Here are five small changes that made ours easier to use every day.',
-    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=80',
-    likes: 324,
-    comments: 48,
-    reposts: 29,
-    avatar: 'MP',
-    accent: 'from-[#f5d2d2] to-[#d9d4ff]',
-  },
-  {
-    id: 'deep-work',
-    author: 'Carlos Rivera',
-    handle: '@carlos_dev',
-    time: '3 days ago',
-    text: 'The most underrated productivity feature is protecting an uninterrupted hour. Fewer tabs, fewer meetings, better work.',
-    likes: 186,
-    comments: 31,
-    reposts: 17,
-    avatar: 'CR',
-    accent: 'from-[#d9c2ff] to-[#a5d8ff]',
-  },
-  {
-    id: 'creative-routine',
-    author: 'Rohan Mehta',
-    handle: '@rohan_m',
-    time: '1 week ago',
-    text: 'Collecting the tiny rituals that make creative work feel lighter. What is one habit you keep coming back to?',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80',
-    likes: 97,
-    comments: 22,
-    reposts: 8,
-    avatar: 'RM',
-    accent: 'from-[#f9d6a5] to-[#d7c7ff]',
-  },
-]
+
 
 export default function BookmarksPage() {
   const rightAside = (
