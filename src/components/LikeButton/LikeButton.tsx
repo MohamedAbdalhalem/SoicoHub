@@ -23,9 +23,9 @@ export default function LikeButton(
                 }
             })
             if (likes.includes(user)) {
-                setOptimisticLikeCount(oldState => oldState - 1)
+                setOptimisticLikeCount(likesCount-1)
             } else {
-                setOptimisticLikeCount(oldState => oldState + 1)
+                setOptimisticLikeCount(likesCount+1)
             }
             await toggleLikeAction(postId)
         })
@@ -35,7 +35,7 @@ export default function LikeButton(
             onClick={handleOptimisticLike}
             className='flex items-center gap-2 text-[14px] transition-color '
         >
-            {optimisticLike.includes(user) ? <FaHeart className='text-red-500 ' /> : <CiHeart className="text-[23px]" />}
+            {optimisticLike.includes(user) ? <FaHeart className='text-red-500' size={17} /> : <CiHeart size={22} />}
             <span>{optimisticLikeCount}</span>
         </button>
     )
