@@ -23,7 +23,7 @@ const navItems: Array<{ label: ActiveNavItem; icon: LucideIcon; href: string; ba
 
 export default async function Sidebar({ activeItem }: { activeItem: ActiveNavItem }) {
     return (
-        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 dark:border-[#293242] dark:bg-[#171d29] lg:flex lg:flex-col'>
+        <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 dark:border-[#293242] dark:bg-[#171d29] lg:flex lg:flex-col fixed h-screen z-20'>
             <div className='mb-8 flex items-center gap-3 pl-1'>
                 <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-[#5a4ae9] text-white shadow-[0_8px_18px_rgba(90,74,233,0.35)]'>
                     <Sparkles className='h-4 w-4' />

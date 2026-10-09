@@ -28,11 +28,11 @@ export default function  Page() {
 
   return (
     <AppShell activeItem='Notifications' rightAside={rightAside}>
-      <div className='overflow-y-auto px-4 py-5 pb-20 sm:px-5 lg:px-0 lg:pb-5'>
+      <div className='min-h-dvh overflow-y-auto px-4 py-5 pb-24 sm:px-5 lg:px-0 lg:pb-5'>
         <div className='mx-auto max-w-190'>
-          <div className='mb-5 flex items-center justify-between'>
-            <h1 className='text-[30px] font-semibold tracking-[-0.06em] text-[#1e2430] dark:text-[#f1f4fb]'>Notifications</h1>
-            <button type='button' className='text-[15px] font-medium text-[#5a4ae9] hover:underline'>
+          <div className='mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between'>
+            <h1 className='text-2xl font-semibold tracking-[-0.06em] text-[#1e2430] dark:text-[#f1f4fb] sm:text-[30px]'>Notifications</h1>
+            <button type='button' className='text-sm font-medium text-[#5a4ae9] hover:underline sm:text-[15px]'>
               Mark all as read
             </button>
           </div>

@@ -194,3 +194,8 @@ export const toggleLikeAction = async function (postId : string) {
         throw new Error('fiald to like this post')
     }
 }
+
+export const modifyPageAction = async function (pageNumber : number) {
+    const myCookies = await cookies()
+    myCookies.set('page',pageNumber.toString())
+}

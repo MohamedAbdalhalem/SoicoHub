@@ -13,7 +13,7 @@ const suggestions = [
 export default function BookmarksPage() {
   const rightAside = (
     <>
-      <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
+      <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330] '>
         <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
         <div className='space-y-3'>
           {suggestions.map(({ name, handle, accent }) => (
@@ -32,7 +32,7 @@ export default function BookmarksPage() {
 
   return (
     <AppShell activeItem='Bookmarks' rightAside={rightAside}>
-      <div className='h-full overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
+      <div className='min-h-screen overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
         <div className='mx-auto max-w-190 px-4 py-5 sm:px-5 lg:px-0 lg:py-6'>
           <div className='mb-5 flex items-start justify-between gap-4'>
             <div>

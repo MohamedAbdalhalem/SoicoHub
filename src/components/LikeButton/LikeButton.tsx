@@ -17,6 +17,7 @@ export default function LikeButton(
         startTransition(async () => {
             setOptimisticLike(oldState => {
                 if (oldState.includes(user)) {
+                    
                     return []
                 } else {
                     return [user]
