@@ -9,9 +9,7 @@ export default function Error({
   error: Error & { digest?: string }
   retry: () => void
 }) {
-  useEffect(() => {
-    console.error(error)
-  }, [error])
+  
 
   return (
     <main className='flex min-h-screen items-center justify-center bg-[#f3f5f8] px-4 dark:bg-[#10151f]'>

@@ -21,23 +21,30 @@ export type postType = {
 }
 
 export type userType = {
-    name: string,
-    photo: string,
-    _id:string
+    _id: string
+    name: string
+    username: string
+    email: string
+    dateOfBirth: string
+    gender: string
+    photo: string
+    cover: string
+    bookmarks: unknown[]
+    followers: unknown[]
+    following: unknown[]
+    createdAt: string
+    followersCount: number
+    followingCount: number
+    bookmarksCount: number
+    id: string
 }
+
 export type commentType = {
     content: string,
     commentCreator: userType
     _id: string
 }
 
-export type userDataType = {
-    name: string,
-    email: string,
-    gender: string,
-    dateOfBirth: string,
-    photo: string,
-    _id: string
-}
+
 
 
