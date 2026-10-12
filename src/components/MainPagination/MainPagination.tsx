@@ -6,6 +6,10 @@ import { modifyPageAction } from '@/lib/action'
 export default function MainPagination({ numberOfPages, currentPage, nextPage }: { numberOfPages: number, currentPage: number, nextPage: number }) {
     const pageChage = async function ({ selected }: { selected: number }) {
         await modifyPageAction(selected + 1)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     }
     return (
         <nav aria-label='Post pagination' className='flex w-full justify-center pt-2'>

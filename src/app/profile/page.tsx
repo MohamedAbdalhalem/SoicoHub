@@ -4,6 +4,9 @@ import { Bookmark, CalendarDays, Camera, PencilLine, UsersRound, UserRound } fro
 import { cookies } from 'next/headers'
 import { userType } from '../types'
 import Image from 'next/image'
+import ProfileTabs from '@/components/ProfileSubPages/ProfileTabs'
+import UserBookmarks from '@/components/ProfileSubPages/UserBookmarks'
+import UserPosts from '@/components/ProfileSubPages/UserPosts'
 
 const suggestions = [
     { name: 'Rohan Mehta', handle: '@rohan_m', accent: 'from-[#f4c7b8] to-[#d9b2ff]' },
@@ -13,16 +16,19 @@ const suggestions = [
 
 
 
-export default async function ProfilePage() {
+export default async function ProfilePage({ searchParams }: {  searchParams: Promise<{tab : string}>}) {
+
+    const tab = (await searchParams).tab
+    
     const cookieStore = await cookies()
     const token = cookieStore.get('tkn')?.value
 
-    const res = await fetch('https://route-posts.routemisr.com/users/profile-data',{
-        headers : {
-            token : token || ''
+    const res = await fetch('https://route-posts.routemisr.com/users/profile-data', {
+        headers: {
+            token: token || ''
         }
     })
-    const {data : {user}} = ( await res.json()) as  {data : { user : userType } }
+    const { data: { user } } = (await res.json()) as { data: { user: userType } }
     const joinedDate = new Date(user.createdAt)
     const joinedLabel = Number.isNaN(joinedDate.getTime())
         ? user.createdAt
@@ -145,23 +151,8 @@ export default async function ProfilePage() {
                         </div>
 
                         <div className='border-t border-[#e9ebf1] bg-[#fafbfc] px-5 pt-2 dark:border-[#303a4c] dark:bg-[#171d29] sm:px-7'>
-                            <div role='tablist' aria-label='Profile content' className='flex gap-8'>
-                                <button type='button' role='tab' aria-selected='true' className='relative flex items-center gap-2 py-4 text-[14px] font-semibold text-[#5a4ae9] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-full after:bg-[#5a4ae9]'>
-                                    Posts
-                                </button>
-                                <button type='button' role='tab' aria-selected='false' className='flex items-center gap-2 py-4 text-[14px] font-medium text-[#778092] transition hover:text-[#343b4a] dark:text-[#aeb8ca] dark:hover:text-white'>
-                                    <Bookmark className='h-4 w-4' />
-                                    Bookmarks
-                                </button>
-                            </div>
-
-                            {/* <div className='mt-4 grid grid-cols-2 gap-3 sm:gap-4'>
-                                {postImages.map((src, index) => (
-                                    <div key={src} className='overflow-hidden rounded-[18px] border border-[#e5e8ee] bg-white dark:border-[#303a4c] dark:bg-[#202838]'>
-                                        <img src={src} alt={`Post ${index + 1}`} className='h-45 w-full object-cover sm:h-52.5' />
-                                    </div>
-                                ))}
-                            </div> */}
+                            <ProfileTabs />
+                            {tab === "bookmarks"  ? <UserBookmarks/> : <UserPosts/>}
                         </div>
                     </div>
                 </div>
