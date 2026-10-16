@@ -89,6 +89,18 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
+         myCookies.set('name', data.data.user.name, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+         myCookies.set('username', data.data.user.username, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+         myCookies.set('photo', data.data.user.photo, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
     } catch (error: unknown) {
         if (error) {
             return {
@@ -157,6 +169,19 @@ export const signinAction = async function (prevState: any, formData: FormData) 
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
+         myCookies.set('name', data.data.user.name, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+         myCookies.set('username', data.data.user.username, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+         myCookies.set('photo', data.data.user.photo, {
+            secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+        
     } catch (error) {
         if (error) {
             return {
@@ -177,6 +202,9 @@ export const signinAction = async function (prevState: any, formData: FormData) 
 export const signoutAction = async function () {
     const cookieStore = await cookies()
     cookieStore.set('tkn', '')
+    cookieStore.set('name', '')
+    cookieStore.set('username', '')
+    cookieStore.set('photo', '')
     redirect('/sign-in')
 }
 

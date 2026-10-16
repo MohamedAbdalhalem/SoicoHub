@@ -1,14 +1,17 @@
 
+import type { HTMLInputTypeAttribute } from 'react'
+
 type CustomInputProps = {
     className?: string,
     labelClassName?: string,
     label: string,
     id: string,
-    type: string,
-    placeholder : string,
+    type: HTMLInputTypeAttribute,
+    placeholder?: string,
     name : string,
     defaultValue? : string,
-    errorMassage? : undefined | string
+    errorMassage? : undefined | string,
+    accept?: string
 }
 
 export default function CustomInput(
