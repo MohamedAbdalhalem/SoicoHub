@@ -242,7 +242,7 @@ export const createPostAction = async function (prevState: any,formData: FormDat
         image.size > 0 &&
         image.type.startsWith('image/');
 
-    if (!content && (image.size === 0 || !image.type.startsWith('image/'))) {
+    if (!content && !hasImage) {
         return {
             errors: {
                 createPostError: "You can't create an empty post.",
@@ -271,7 +271,8 @@ export const createPostAction = async function (prevState: any,formData: FormDat
             body,
         }
     );
-
+    const data = await res.json()
+    console.log(data)
     revalidatePath('/profile');
     redirect('/profile');
 };
