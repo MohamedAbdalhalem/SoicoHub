@@ -8,6 +8,7 @@ import {
 import LikeButton from '../LikeButton/LikeButton'
 import { cookies } from 'next/headers'
 import { jwtDecode } from "jwt-decode";
+import Image from 'next/image'
 
 
 export default async function Post({post} : {post : postType}) {
@@ -64,6 +65,18 @@ export default async function Post({post} : {post : postType}) {
             <p className='whitespace-pre-line text-[15px] leading-relaxed text-[#2d3746] dark:text-[#d4dce9]'>
                 {post.body}
             </p>
+
+            {post.image && (
+                <div className='relative mt-3 aspect-[16/9] w-full overflow-hidden rounded-xl bg-[#e5e8ee] dark:bg-[#202838]'>
+                    <Image
+                        src={post.image}
+                        alt={`Image shared by ${post.user.name}`}
+                        fill
+                        sizes='(max-width: 768px) 100vw, 768px'
+                        className='object-contain'
+                    />
+                </div>
+            )}
 
             {/* Actions */}
             <div className='mt-4 flex items-center justify-between gap-3 pr-1 text-[#6a7280] dark:text-[#9da9bc]'>

@@ -18,6 +18,7 @@ export type postType = {
     isShare: boolean
     id: string
     bookmarked: boolean
+    image : string
 }
 
 export type userType = {
@@ -37,6 +38,7 @@ export type userType = {
     followingCount: number
     bookmarksCount: number
     id: string
+    
 }
 
 export type commentType = {

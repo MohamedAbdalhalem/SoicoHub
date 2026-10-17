@@ -1,7 +1,9 @@
 "use server"
+import { error } from 'console'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+
 
 export const signupAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies()
@@ -89,15 +91,15 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('name', data.data.user.name, {
+        myCookies.set('name', data.data.user.name, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('username', data.data.user.username, {
+        myCookies.set('username', data.data.user.username, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('photo', data.data.user.photo, {
+        myCookies.set('photo', data.data.user.photo, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
@@ -169,19 +171,19 @@ export const signinAction = async function (prevState: any, formData: FormData) 
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('name', data.data.user.name, {
+        myCookies.set('name', data.data.user.name, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('username', data.data.user.username, {
+        myCookies.set('username', data.data.user.username, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-         myCookies.set('photo', data.data.user.photo, {
+        myCookies.set('photo', data.data.user.photo, {
             secure: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
-        
+
     } catch (error) {
         if (error) {
             return {
@@ -208,7 +210,7 @@ export const signoutAction = async function () {
     redirect('/sign-in')
 }
 
-export const toggleLikeAction = async function (postId : string) {
+export const toggleLikeAction = async function (postId: string) {
     const myCookies = await cookies()
     const res = await fetch(`https://route-posts.routemisr.com/posts/${postId}/like`, {
         method: "PUT",
@@ -218,12 +220,59 @@ export const toggleLikeAction = async function (postId : string) {
     })
     revalidatePath('/')
     revalidatePath('/bookmarks')
-    if(!res.ok){
+    if (!res.ok) {
         throw new Error('fiald to like this post')
     }
 }
 
-export const modifyPageAction = async function (pageNumber : number) {
+export const modifyPageAction = async function (pageNumber: number) {
     const myCookies = await cookies()
-    myCookies.set('page',pageNumber.toString())
+    myCookies.set('page', pageNumber.toString())
 }
+
+export const createPostAction = async function (prevState: any,formData: FormData) {
+    const myCookies = await cookies();
+    const token = myCookies.get('tkn')?.value;
+
+    const content = formData.get('body')?.toString().trim() || '';
+    const image = (formData.get('image')) as File;
+
+    const hasImage =
+        image instanceof File &&
+        image.size > 0 &&
+        image.type.startsWith('image/');
+
+    if (!content && (image.size === 0 || !image.type.startsWith('image/'))) {
+        return {
+            errors: {
+                createPostError: "You can't create an empty post.",
+                submittedAt: Date.now(),
+            },
+        };
+    }
+
+    const body = new FormData();
+
+    if (content) {
+        body.append('body', content);
+    }
+
+    if (hasImage) {
+        body.append('image', image);
+    }
+
+    const res = await fetch(
+        'https://route-posts.routemisr.com/posts',
+        {
+            method: 'POST',
+            headers: {
+                token: token || '',
+            },
+            body,
+        }
+    );
+
+    revalidatePath('/profile');
+    redirect('/profile');
+};
+

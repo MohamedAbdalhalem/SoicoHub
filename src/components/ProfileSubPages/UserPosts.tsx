@@ -24,7 +24,7 @@ export default async function UserPosts() {
         {data.data.posts.length === 0 && <p className="py-12 text-center text-sm font-medium text-muted-foreground">
           There are no posts to show.
         </p>}
-        {data.data.posts.length !== 0 && data.data.posts.map(post => <Post post={post} />)}
+        {data.data.posts.length !== 0 && data.data.posts.map(post => <Post key={post._id} post={post} />)}
       </div>
     </Suspense>
   )
