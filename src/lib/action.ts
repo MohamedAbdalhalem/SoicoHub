@@ -1,5 +1,4 @@
 "use server"
-import { error } from 'console'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -230,7 +229,7 @@ export const modifyPageAction = async function (pageNumber: number) {
     myCookies.set('page', pageNumber.toString())
 }
 
-export const createPostAction = async function (prevState: any,formData: FormData) {
+export const createPostAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies();
     const token = myCookies.get('tkn')?.value;
 
@@ -277,3 +276,21 @@ export const createPostAction = async function (prevState: any,formData: FormDat
     redirect('/profile');
 };
 
+export const deletePostAction = async function (prevState: any, id: string) {
+    const myCookies = await cookies();
+    const token = myCookies.get('tkn')?.value!;
+
+    const res = await fetch(`https://route-posts.routemisr.com/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+            token,
+        }
+    })
+
+    if (!res.ok) {
+        throw new Error('fialed to delete this post')
+    }
+
+    revalidatePath('/profile');
+    redirect('/profile');
+}
