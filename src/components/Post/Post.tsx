@@ -68,12 +68,56 @@ export default async function Post({ post }: { post: postType }) {
             </div>
 
             {/* Body */}
-            <p className='whitespace-pre-line break-words text-[15px] leading-7 text-[#2d3746] dark:text-[#d4dce9]'>
+            <p className='whitespace-pre-line wrap-break-word text-[15px] leading-7 text-[#2d3746] dark:text-[#d4dce9]'>
                 {post.body}
             </p>
 
+            {post.sharedPost && (
+                <div className='mt-4 overflow-hidden rounded-2xl border border-[#e5e8ee] dark:border-[#303a4c]'>
+                    <div className='flex items-center gap-2 px-4 py-3'>
+                        <div className='relative h-9 w-9 shrink-0 overflow-hidden rounded-full'>
+                            <Image
+                                src={post.sharedPost.user.photo}
+                                alt={post.sharedPost.user.name}
+                                fill
+                                sizes='36px'
+                                className='object-cover'
+                            />
+                        </div>
+                        <div className='min-w-0'>
+                            <div className='flex flex-wrap items-baseline gap-x-2'>
+                                <span className='max-w-full truncate text-sm font-semibold text-[#1d2430] dark:text-[#e9eef8]'>
+                                    {post.sharedPost.user.name}
+                                </span>
+                                <span className='truncate text-xs text-[#7b8393] dark:text-[#9da9bc]'>
+                                    @{post.sharedPost.user.username}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {post.sharedPost.body && (
+                        <p className='whitespace-pre-line wrap-break-word px-4 pb-3 text-sm leading-6 text-[#2d3746] dark:text-[#d4dce9]'>
+                            {post.sharedPost.body}
+                        </p>
+                    )}
+
+                    {post.sharedPost.image && (
+                        <div className='relative aspect-video w-full overflow-hidden'>
+                            <Image
+                                src={post.sharedPost.image}
+                                alt={`Image shared by ${post.sharedPost.user.name}`}
+                                fill
+                                sizes='(max-width: 768px) 100vw, 768px'
+                                className='object-contain p-1'
+                            />
+                        </div>
+                    )}
+                </div>
+            )}
+
             {post.image && (
-                <div className='relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-2xl '>
+                <div className='relative mt-4 aspect-video w-full overflow-hidden rounded-2xl '>
                     <Image
                         src={post.image}
                         alt={`Image shared by ${post.user.name}`}

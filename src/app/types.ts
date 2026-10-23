@@ -1,14 +1,33 @@
+type postUserType = {
+    _id: string
+    name: string
+    username: string
+    photo: string
+}
+
+export type sharedPostType = {
+    _id: string
+    body?: string
+    privacy: string
+    user: postUserType
+    sharedPost: sharedPostType | null
+    likes: string[]
+    createdAt: string
+    commentsCount: number
+    topComment: unknown | null
+    sharesCount: number
+    likesCount: number
+    isShare: boolean
+    id: string
+    image?: string
+}
+
 export type postType = {
     _id: string
     body: string
     privacy: string
-    user: {
-        _id: string
-        name: string
-        username: string
-        photo: string
-    }
-    sharedPost: unknown | null
+    user: postUserType
+    sharedPost: sharedPostType | null
     likes: string[]
     createdAt: string
     commentsCount: number
@@ -18,7 +37,7 @@ export type postType = {
     isShare: boolean
     id: string
     bookmarked: boolean
-    image : string
+    image?: string
 }
 
 export type userType = {
@@ -46,7 +65,6 @@ export type commentType = {
     commentCreator: userType
     _id: string
 }
-
 
 
 
