@@ -23,7 +23,7 @@ export default function ProfileTabs() {
         "flex items-center gap-2 py-4 text-[14px] font-medium text-[#778092] transition hover:text-[#343b4a] dark:text-[#aeb8ca] dark:hover:text-white";
         
     return (
-        <div role='tablist' aria-label='Profile content' className='flex gap-8'>
+        <div role='tablist' aria-label='Profile content' className='flex gap-8 mb-3'>
             <button onClick={handleChangeToPostsTab} type='button' role='tab' aria-selected='true' className={tab !== 'bookmarks' ? activeTabClass : inactiveTabClass} >
                 Posts
             </button>

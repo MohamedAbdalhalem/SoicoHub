@@ -2,7 +2,7 @@
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-
+import { toast } from 'sonner'
 
 export const signupAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies()
@@ -293,4 +293,18 @@ export const deletePostAction = async function (prevState: any, id: string) {
 
     revalidatePath('/profile');
     redirect('/profile');
+}
+
+export const sharePostAction = async function (id : string) {
+    const myCookies = await cookies();
+    const token = myCookies.get('tkn')?.value!;
+    const res = await fetch(`https://route-posts.routemisr.com/posts/${id}/share`,{
+        method : "POST",
+        headers : {
+            token,
+        }
+    })
+    const data = await res.json() as ({message : string});
+    revalidatePath('/')
+    return data;
 }

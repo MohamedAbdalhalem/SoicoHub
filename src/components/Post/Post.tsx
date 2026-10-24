@@ -2,7 +2,6 @@ import { postType } from '@/app/types'
 import {
     Archive,
     MessageCircle,
-    Repeat2,
     Wrench,
 } from 'lucide-react'
 import LikeButton from '../LikeButton/LikeButton'
@@ -10,6 +9,7 @@ import { cookies } from 'next/headers'
 import { jwtDecode } from 'jwt-decode'
 import Image from 'next/image'
 import DeletePostButton from '../DeletePostButton/DeletePostButton'
+import ShareButton from '../ShareButton/ShareButton'
 
 export default async function Post({ post }: { post: postType }) {
     const createdAt = new Date(post.createdAt)
@@ -142,14 +142,7 @@ export default async function Post({ post }: { post: postType }) {
                         <span>{post.commentsCount}</span>
                     </button>
 
-                    <button
-                        type='button'
-                        aria-label={`${post.sharesCount} shares`}
-                        className='flex h-9 items-center gap-2 rounded-xl px-3 text-[13px] transition-colors hover:bg-[#eef0f7] hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5b4fe8]/50 sm:text-sm dark:hover:bg-[#252f40] dark:hover:text-emerald-400'
-                    >
-                        <Repeat2 className='h-4 w-4' strokeWidth={1.8} />
-                        <span>{post.sharesCount}</span>
-                    </button>
+                   {!post.isShare && <ShareButton sharesCount={post.sharesCount} postId={post.id} />}
                 </div>
 
                 <button
