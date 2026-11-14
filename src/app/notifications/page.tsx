@@ -1,33 +1,11 @@
 import { AppShell } from '@/components/ui/app-shell'
 import Notification from '@/components/Notification/Notification'
-import Suggestion from '@/components/Suggestion/Suggestion'
-
-const suggestions = [
-  { name: 'Rohan Me', handle: '@rohan_m', accent: 'from-[#f4c7b8] to-[#d9b2ff]' },
-  { name: 'Zara Ok', handle: '@zara_ok', accent: 'from-[#bfe4ff] to-[#cbc4ff]' },
-  { name: 'Lukas W', handle: '@lukas_w', accent: 'from-[#f9d7a7] to-[#f0b4d5]' },
-]
-
-
 
 export default function  Page() {
-  const rightAside = (
-    <div className='rounded-[20px] border border-[#e5e8ee] bg-[#f8f9fb] p-4 dark:border-[#303a4c] dark:bg-[#1b2330]'>
-      <h3 className='mb-4 text-[16px] font-semibold text-[#2b2f3b] dark:text-[#eef2ff]'>Who to follow</h3>
-      <div className='space-y-3'>
-        {suggestions.map(({ name, handle, accent }) => (
-          <Suggestion key={handle} name={name} handle={handle} accent={accent} />
-        ))}
-      </div>
-
-      <button type='button' className='mt-4 text-[13px] font-medium text-[#5b4fe8]'>
-        Show more
-      </button>
-    </div>
-  )
+  
 
   return (
-    <AppShell activeItem='Notifications' rightAside={rightAside}>
+    <AppShell activeItem='Notifications' >
       <div className='min-h-dvh overflow-y-auto px-4 py-5 pb-24 sm:px-5 lg:px-0 lg:pb-5'>
         <div className='mx-auto max-w-190'>
           <div className='mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between'>

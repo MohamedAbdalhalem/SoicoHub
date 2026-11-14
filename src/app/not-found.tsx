@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import { ArrowLeft, Compass, Home, Search, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { AppShell } from '@/components/ui/app-shell'
 
 export default function NotFound() {
   return (
-    <main className='relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f3f5f8] px-4 py-8 text-[#1f2530] dark:bg-[#10151f] dark:text-[#f1f4fb] sm:px-6 lg:px-8'>
+    <AppShell activeItem='Home'>
+    <div className='relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f3f5f8] px-4 py-8 text-[#1f2530] dark:bg-[#10151f] dark:text-[#f1f4fb] sm:px-6 lg:px-8'>
       <div className='pointer-events-none absolute inset-0 opacity-70 dark:opacity-40'>
         <div className='absolute -left-24 top-12 h-72 w-72 rounded-full bg-[#d9d4ff]/60 blur-3xl dark:bg-[#4338a8]/25' />
         <div className='absolute -right-24 bottom-8 h-80 w-80 rounded-full bg-[#cfe7ff]/70 blur-3xl dark:bg-[#245a8f]/25' />
@@ -59,6 +61,7 @@ export default function NotFound() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
+    </AppShell>
   )
 }

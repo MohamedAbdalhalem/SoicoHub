@@ -68,7 +68,7 @@ export default function PostsLoadingScreen() {
 
                         {/* User info */}
                         <div className='space-y-2'>
-                            <div className='h-4 w-28 rounded-md bg-[#e2e5eb] dark:bg-[#303a4c]' />
+                            
 
                             <div className='h-3 w-40 rounded-md bg-[#e2e5eb] dark:bg-[#303a4c]' />
                         </div>

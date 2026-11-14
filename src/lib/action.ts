@@ -2,7 +2,7 @@
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { toast } from 'sonner'
+
 
 export const signupAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies()
@@ -87,20 +87,20 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             throw new Error(data.message);
         }
         myCookies.set('tkn', data.data.token, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('name', data.data.user.name, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('username', data.data.user.username, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('photo', data.data.user.photo, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
     } catch (error: unknown) {
         if (error) {
@@ -167,20 +167,20 @@ export const signinAction = async function (prevState: any, formData: FormData) 
         }
 
         myCookies.set('tkn', data.data.token, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('name', data.data.user.name, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('username', data.data.user.username, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
         myCookies.set('photo', data.data.user.photo, {
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
 
     } catch (error) {
@@ -295,16 +295,16 @@ export const deletePostAction = async function (prevState: any, id: string) {
     redirect('/profile');
 }
 
-export const sharePostAction = async function (id : string) {
+export const sharePostAction = async function (id: string) {
     const myCookies = await cookies();
     const token = myCookies.get('tkn')?.value!;
-    const res = await fetch(`https://route-posts.routemisr.com/posts/${id}/share`,{
-        method : "POST",
-        headers : {
+    const res = await fetch(`https://route-posts.routemisr.com/posts/${id}/share`, {
+        method: "POST",
+        headers: {
             token,
         }
     })
-    const data = await res.json() as ({message : string});
+    const data = await res.json() as ({ message: string });
     revalidatePath('/')
     return data;
 }
