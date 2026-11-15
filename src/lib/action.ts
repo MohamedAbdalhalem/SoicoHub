@@ -224,10 +224,6 @@ export const toggleLikeAction = async function (postId: string) {
     }
 }
 
-export const modifyPageAction = async function (pageNumber: number) {
-    const myCookies = await cookies()
-    myCookies.set('page', pageNumber.toString())
-}
 
 export const createPostAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies();

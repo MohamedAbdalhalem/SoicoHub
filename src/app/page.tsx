@@ -4,16 +4,15 @@ import { AppShell } from '@/components/ui/app-shell'
 import CustomInput from '@/components/CustomInput/CustomInput'
 import { cookies } from 'next/headers'
 import Post from '@/components/Post/Post'
-import PostsLoadingScreen from '@/components/PostsLoadingScreen/PostsLoadingScreen'
+import PostsLoadingScreen from '@/components/LoadingScreens/PostsLoadingScreen'
 import { postType } from './types'
 import { Suspense } from 'react'
 import MainPagination from '@/components/MainPagination/MainPagination'
 
 
-async function Posts() {
+async function Posts({page} : {page : string}) {
   const cookieStore = await cookies()
   const token = cookieStore.get('tkn')?.value
-  const page = cookieStore.get('page')?.value
   const response = await fetch(`https://route-posts.routemisr.com/posts?limit=10&page=${page}`, {
     headers: {
       token: token || '',
@@ -44,14 +43,14 @@ async function Posts() {
     <div className='space-y-4'>
       {data.data.posts.map(post => <Post key={post._id} post={post} />)}
 
-      <MainPagination numberOfPages={data.meta.pagination.numberOfPages} currentPage={data.meta.pagination.currentPage} nextPage={data.meta.pagination.nextPage} />
+      <MainPagination numberOfPages={data.meta.pagination.numberOfPages} currentPage={data.meta.pagination.currentPage}  />
     </div>
   )
 }
 
-export default async function Home() {
-  const cookieStore = await cookies()
-  const page = cookieStore.get('page')?.value
+export default async function Home({ searchParams }:
+  { searchParams: Promise<{ page : string }> }) {
+  const page =  (await searchParams).page
   return (
     <AppShell activeItem='Home'>
       <div className=' overflow-y-auto bg-[#f3f5f8] pb-20 dark:bg-[#10151f] lg:pb-0'>
@@ -85,7 +84,7 @@ export default async function Home() {
             <button type='button' className='flex-1 text-center text-[15px] font-semibold text-[#5b4fe8] underline decoration-[#5b4fe8] decoration-2 underline-offset-12'>For You</button>
             <button type='button' className='flex-1 text-center text-[15px] font-medium text-[#6f7786] dark:text-[#aeb8ca]'>Following</button>
           </div>
-          <Suspense fallback={<PostsLoadingScreen />} key={page} > <Posts /> </Suspense>
+          <Suspense fallback={<PostsLoadingScreen  />}  > <Posts page={page} /> </Suspense>
 
         </div>
       </div>

@@ -1,15 +1,14 @@
 "use client"
 import ReactPaginate from 'react-paginate'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { modifyPageAction } from '@/lib/action'
+import { usePathname, useRouter } from 'next/navigation'
 
-export default function MainPagination({ numberOfPages, currentPage, nextPage }: { numberOfPages: number, currentPage: number, nextPage: number }) {
-    const pageChage = async function ({ selected }: { selected: number }) {
-        await modifyPageAction(selected + 1)
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+
+export default function MainPagination({ numberOfPages, currentPage }: { numberOfPages: number, currentPage: number }) {
+    const router = useRouter()
+    const pathname = usePathname()
+    const pageChage = async function ({ selected }: { selected: number }) {      
+         router.push(pathname + `?page=${selected +1}`) 
     }
     return (
         <nav aria-label='Post pagination' className='flex w-full justify-center pt-2'>
@@ -46,7 +45,6 @@ export default function MainPagination({ numberOfPages, currentPage, nextPage }:
                 disabledClassName='pointer-events-none opacity-40'
                 previousAriaLabel='Go to previous page'
                 nextAriaLabel='Go to next page'
-            // pageAriaLabelBuilder={(page) => `Go to page ${page}`}
             />
         </nav>
     )

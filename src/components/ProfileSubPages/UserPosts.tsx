@@ -2,7 +2,7 @@ import { postType } from "@/app/types";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
-import PostsLoadingScreen from "../PostsLoadingScreen/PostsLoadingScreen";
+import PostsLoadingScreen from "../LoadingScreens/PostsLoadingScreen";
 import Post from "../Post/Post";
 
 

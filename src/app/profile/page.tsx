@@ -8,7 +8,7 @@ import ProfileTabs from '@/components/ProfileSubPages/ProfileTabs'
 import UserBookmarks from '@/components/ProfileSubPages/UserBookmarks'
 import UserPosts from '@/components/ProfileSubPages/UserPosts'
 import { Suspense } from 'react'
-import ProfileLoadingScreen from '@/components/ProfileLoadingScreen/ProfileLoadingScreen'
+import ProfileLoadingScreen from '@/components/LoadingScreens/ProfileLoadingScreen'
 
 async function Profile({tab} : {tab :string}) {
 

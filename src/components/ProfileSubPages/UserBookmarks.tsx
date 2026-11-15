@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { Suspense } from "react";
-import PostsLoadingScreen from "../PostsLoadingScreen/PostsLoadingScreen";
+import PostsLoadingScreen from "../LoadingScreens/PostsLoadingScreen";
 import Post from "../Post/Post";
 import { postType } from "@/app/types";
 export default async function UserBookmarks() {

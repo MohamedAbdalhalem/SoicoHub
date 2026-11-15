@@ -15,7 +15,6 @@ async function Suggestions() {
   })
   const data = await (response.json()) as {data : {suggestions : suggestion[]}}
 
-  console.log(data)
   return (
     <div className='space-y-3'>
       {data.data.suggestions.map((suggestion) => <Suggestion key={suggestion._id} {...suggestion} />)}
