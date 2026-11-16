@@ -19,7 +19,7 @@ export default async function UserBookmarks() {
         {data.data.bookmarks.length === 0 && <p className="py-12 text-center text-sm font-medium text-muted-foreground">
           There are no bookmarks to show.
         </p>}
-        {data.data.bookmarks.length !== 0 && data.data.bookmarks.map(post => <Post post={post} />)}
+        {data.data.bookmarks.length !== 0 && data.data.bookmarks.map(post => <Post key={post._id} post={post} />)}
       </div>
     </Suspense>
   )

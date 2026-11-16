@@ -34,7 +34,7 @@ export default function LikeButton(
     return (
         <button
             onClick={handleOptimisticLike}
-            className='flex items-center gap-2 text-[14px] transition-color '
+            className='flex items-center gap-2 text-[14px] transition-color cursor-pointer'
         >
             {optimisticLike.includes(user) ? <FaHeart className='text-red-500' size={17} /> : <CiHeart size={22} />}
             <span>{optimisticLikeCount}</span>

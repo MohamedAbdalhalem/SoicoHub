@@ -224,6 +224,22 @@ export const toggleLikeAction = async function (postId: string) {
     }
 }
 
+export const toggleBookmarkAction = async function(id : string){
+    const myCookies = await cookies()
+    const token = myCookies.get('tkn')?.value!
+    const response = await fetch(`https://route-posts.routemisr.com/posts/${id}/bookmark`,{
+        method : "PUT",
+        headers :{
+            token,
+        }
+    })
+    revalidatePath('/')
+    revalidatePath('/profile')
+    revalidatePath('/bookmarks')
+    if(!response.ok){
+        throw new Error('fialed to bookmark this post')
+    }
+}
 
 export const createPostAction = async function (prevState: any, formData: FormData) {
     const myCookies = await cookies();

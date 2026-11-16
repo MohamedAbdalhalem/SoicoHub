@@ -1,6 +1,5 @@
 import { postType } from '@/app/types'
 import {
-    Archive,
     MessageCircle,
     Wrench,
 } from 'lucide-react'
@@ -10,6 +9,7 @@ import { jwtDecode } from 'jwt-decode'
 import Image from 'next/image'
 import DeletePostButton from '../DeletePostButton/DeletePostButton'
 import ShareButton from '../ShareButton/ShareButton'
+import BookmarkButton from '../BookmarkButton/BookmarkButton'
 
 export default async function Post({ post }: { post: postType }) {
     const createdAt = new Date(post.createdAt)
@@ -145,14 +145,7 @@ export default async function Post({ post }: { post: postType }) {
                    {!post.isShare && <ShareButton sharesCount={post.sharesCount} postId={post.id} />}
                 </div>
 
-                <button
-                    type='button'
-                    aria-label='Save post'
-                    title='Save post'
-                    className='flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors hover:bg-[#eef0f7] hover:text-[#5b4fe8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5b4fe8]/50 dark:hover:bg-[#252f40] dark:hover:text-[#b7adff]'
-                >
-                    <Archive className='h-4 w-4' strokeWidth={1.8} />
-                </button>
+                <BookmarkButton postId={post._id} isBookmark={post.bookmarked}/>
             </div>
         </article>
     )
