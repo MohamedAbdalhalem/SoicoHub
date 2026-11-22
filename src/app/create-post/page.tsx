@@ -4,16 +4,11 @@ import { Button } from '@/components/ui/button'
 import {
   ArrowLeft
 } from 'lucide-react'
-import { cookies } from 'next/headers'
-import Image from 'next/image'
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm'
+import CreatePostUserCard from '@/components/CreatePostUserCard/CreatePostUserCard'
 
 
 export default async function CreatePostPage() {
-  const myCookies = await cookies()
-  const name = myCookies.get('name')?.value
-  const username = myCookies.get('username')?.value
-  const photo = myCookies.get('photo')?.value
   return (
     <AppShell activeItem='Create Post'>
       <div className='h-full overflow-y-auto bg-[#f3f5f8] dark:bg-[#10151f]'>
@@ -29,15 +24,7 @@ export default async function CreatePostPage() {
               </Button>
             </div>
 
-            <div className='mx-auto mb-3 flex max-w-180 items-center gap-3 px-1'>
-              <div>
-                <Image src={photo || ''} alt={name || ''} width={48} height={48} className=' rounded-full' />
-              </div>
-              <div>
-                <p className='text-[16px] font-semibold text-[#1d2430] dark:text-[#e9eef8]'>{name}</p>
-                <p className='text-[13px] text-[#697386] dark:text-[#aeb8ca]'>@{username}</p>
-              </div>
-            </div>
+            <CreatePostUserCard/>
 
             <CreatePostForm />
           </div>

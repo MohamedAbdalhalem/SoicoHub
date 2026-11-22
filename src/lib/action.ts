@@ -90,18 +90,6 @@ export const signupAction = async function (prevState: any, formData: FormData) 
             secure: process.env.NODE_ENV === 'production',
             expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })
-        myCookies.set('name', data.data.user.name, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
-        myCookies.set('username', data.data.user.username, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
-        myCookies.set('photo', data.data.user.photo, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
     } catch (error: unknown) {
         if (error) {
             return {
@@ -167,18 +155,6 @@ export const signinAction = async function (prevState: any, formData: FormData) 
         }
 
         myCookies.set('tkn', data.data.token, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
-        myCookies.set('name', data.data.user.name, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
-        myCookies.set('username', data.data.user.username, {
-            secure: process.env.NODE_ENV === 'production',
-            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        })
-        myCookies.set('photo', data.data.user.photo, {
             secure: process.env.NODE_ENV === 'production',
             expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         })

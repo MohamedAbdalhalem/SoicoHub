@@ -75,12 +75,10 @@ async function Profile({tab} : {tab :string}) {
                                 </div>
                             </div>
 
-                            <div className='mb-2 hidden items-center gap-3 sm:flex'>
-                                <button type='button' className='flex items-center gap-2 rounded-full bg-[#5b4fe8] px-5 py-2.5 text-[14px] font-semibold text-white shadow-[0_6px_16px_rgba(91,79,232,0.25)] transition hover:bg-[#4f43d8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8]'>
-                                    <PencilLine className='h-4 w-4' />
-                                    Edit Profile
-                                </button>
-                            </div>
+                            <Link href='/profile/edit-profile' className='mb-2 hidden items-center gap-2 rounded-full bg-[#5b4fe8] px-5 py-2.5 text-[14px] font-semibold text-white shadow-[0_6px_16px_rgba(91,79,232,0.25)] transition hover:bg-[#4f43d8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8] sm:flex'>
+                                <PencilLine className='h-4 w-4' />
+                                Edit Profile
+                            </Link>
                         </div>
                     </div>
 
@@ -92,10 +90,10 @@ async function Profile({tab} : {tab :string}) {
                             </div>
 
                             <div className='mb-2 sm:hidden'>
-                                <button type='button' className='flex items-center gap-2 rounded-full bg-[#5b4fe8] px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:bg-[#4f43d8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8]'>
+                                <Link href='/profile/edit-profile' className='flex items-center gap-2 rounded-full bg-[#5b4fe8] px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:bg-[#4f43d8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8]'>
                                     <PencilLine className='h-3.5 w-3.5' />
                                     Edit Profile
-                                </button>
+                                </Link>
                             </div>
                         </div>
 

@@ -12,8 +12,9 @@ import { Button } from '../ui/button'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import type { ActiveNavItem } from '@/components/ui/app-shell'
 import SignoutButton from '../SignoutButton/SignoutButton'
-import { cookies } from 'next/headers'
-import Image from 'next/image'
+import SidebarUserCard from '../SidebarUserCard/SidebarUserCard'
+
+
 
 
 const navItems: Array<{ label: ActiveNavItem; icon: LucideIcon; href: string; badge?: number }> = [
@@ -24,10 +25,7 @@ const navItems: Array<{ label: ActiveNavItem; icon: LucideIcon; href: string; ba
 ] as const
 
 export default async function Sidebar({ activeItem }: { activeItem: ActiveNavItem }) {
-    const myCookies = await cookies()
-    const name = myCookies.get('name')?.value
-    const username = myCookies.get('username')?.value
-    const photo = myCookies.get('photo')?.value
+    
     return (
         <aside className='hidden w-62.5 shrink-0 border-r border-[#e6e9ee] bg-[#f6f7fb] p-5 dark:border-[#293242] dark:bg-[#171d29] lg:flex lg:flex-col fixed h-screen z-20'>
             <div className='mb-8 flex items-center gap-3 pl-1'>
@@ -76,14 +74,8 @@ export default async function Sidebar({ activeItem }: { activeItem: ActiveNavIte
                     <SignoutButton />
                 </form>
             </div>
-
-            <div className='mt-auto flex items-center gap-3 rounded-xl border border-[#e6e9ee] bg-white/60 p-2.5 dark:border-[#293242] dark:bg-[#202838]'>
-                <Image src={photo || ''} alt={name || ''} width={48} height={48} className=' rounded-full' />
-                <div className='min-w-0 flex-1'>
-                    <p className='truncate text-[14px] font-semibold text-[#1e2330] dark:text-[#eef2ff]'>{name}</p>
-                    <p className='truncate text-[12px] text-[#6a7280] dark:text-[#aeb8ca]'>@{username}</p>
-                </div>
-            </div>
+            
+            <SidebarUserCard/>
         </aside>
     )
 }

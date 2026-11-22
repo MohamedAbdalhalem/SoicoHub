@@ -11,7 +11,9 @@ import MainPagination from '@/components/MainPagination/MainPagination'
 async function Suggestions({page} : {page :string}) {
   const cookieStore = await cookies()
   const token = cookieStore.get('tkn')?.value!;
-  const response = await fetch(`https://route-posts.routemisr.com/users/suggestions?limit=10&page=${page}`, {
+  let url = `https://route-posts.routemisr.com/users/suggestions?limit=10`
+  if(page) url+=`&page=${page}`;
+  const response = await fetch(url, {
     headers: {
       token,
     }
