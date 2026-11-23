@@ -200,19 +200,19 @@ export const toggleLikeAction = async function (postId: string) {
     }
 }
 
-export const toggleBookmarkAction = async function(id : string){
+export const toggleBookmarkAction = async function (id: string) {
     const myCookies = await cookies()
     const token = myCookies.get('tkn')?.value!
-    const response = await fetch(`https://route-posts.routemisr.com/posts/${id}/bookmark`,{
-        method : "PUT",
-        headers :{
+    const response = await fetch(`https://route-posts.routemisr.com/posts/${id}/bookmark`, {
+        method: "PUT",
+        headers: {
             token,
         }
     })
     revalidatePath('/')
     revalidatePath('/profile')
     revalidatePath('/bookmarks')
-    if(!response.ok){
+    if (!response.ok) {
         throw new Error('fialed to bookmark this post')
     }
 }
@@ -295,4 +295,71 @@ export const sharePostAction = async function (id: string) {
     const data = await res.json() as ({ message: string });
     revalidatePath('/')
     return data;
+}
+
+export const changePasswordAction = async function (prevState: any, formData: FormData) {
+    const myCookies = await cookies()
+    const token= myCookies.get('tkn')?.value!
+    const currentPassword = formData.get('currentPassword')?.toString()!
+    const newPassword = formData.get('newPassword')?.toString()!
+
+    const savedValues = {
+        currentPassword,
+        newPassword
+    }
+    const errors: any = {
+        currentPasswordError: null,
+        newPasswordError: null,
+    }
+    if (!/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(currentPassword)) {
+        errors.currentPasswordError = 'invalid password your password must have be alleast 8 char, have capital letter, small letter and one special character (#?!@$%^&*-)'
+    }
+    if (!/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(newPassword)) {
+        errors.newPasswordError = 'invalid password your password must have be alleast 8 char, have capital letter, small letter and one special character (#?!@$%^&*-)'
+    }
+
+    if(errors.currentPasswordError || errors.newPasswordError){
+        return{
+            errors,
+            savedValues
+        }
+    }
+    
+    try {
+        const res = await fetch('https://route-posts.routemisr.com/users/change-password', {
+            method: 'PATCH',
+            headers: {
+                token,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                password : currentPassword,
+                newPassword: newPassword,
+            }),
+        });
+
+        const data = await res.json();
+        console.log(data)
+        if (!res.ok) {
+            throw new Error(data.message);
+        }
+        myCookies.set('tkn', data.data.token, {
+            secure: process.env.NODE_ENV === 'production',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        })
+    } catch (error: unknown) {
+        if (error) {
+            return {
+                userExists: error instanceof Error && error.message,
+                savedValues
+            }
+        } else {
+            return {
+                errors: null
+            }
+        }
+    }
+    revalidatePath('/','layout')
+    redirect('/profile', 'replace')
+
 }
