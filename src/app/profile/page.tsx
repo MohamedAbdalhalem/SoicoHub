@@ -9,8 +9,11 @@ import UserBookmarks from '@/components/ProfileSubPages/UserBookmarks'
 import UserPosts from '@/components/ProfileSubPages/UserPosts'
 import { Suspense } from 'react'
 import ProfileLoadingScreen from '@/components/LoadingScreens/ProfileLoadingScreen'
+import ProfileImagePreview from '@/components/ProfileSubPages/ProfileImagePreview'
+import ProfileImageUploader from '@/components/ProfileSubPages/ProfileImageUploader'
+import ProfileHeader from '@/components/ProfileSubPages/ProfileHeader'
 
-async function Profile({tab} : {tab :string}) {
+async function Profile({ tab,preview }: { tab: string,preview: string }) {
 
 
     const cookieStore = await cookies()
@@ -57,29 +60,7 @@ async function Profile({tab} : {tab :string}) {
                             <div className='absolute -right-10 top-8 h-44 w-44 rounded-full border border-white/20' />
                         </div>
 
-                        <div className='relative -mt-14.5 flex items-end justify-between gap-3 px-5 pb-4 sm:-mt-16 sm:px-7'>
-                            <div className='flex min-w-0 items-end gap-3 sm:gap-4'>
-                                <div className='relative h-26 w-26 shrink-0 overflow-hidden rounded-full border-[5px] border-white bg-[#e9eaf8] shadow-[0_12px_28px_rgba(23,30,44,0.2)] sm:h-32 sm:w-32 dark:border-[#1b2330] dark:bg-[#202838]'>
-                                    <Image
-                                        src={user.photo}
-                                        alt={user.name}
-                                        className='h-full w-full object-cover'
-                                        fill
-                                    />
-                                </div>
-
-                                <div className='mb-3 hidden sm:block'>
-                                    <button type='button' aria-label='Change profile photo' className='flex h-11 w-11 items-center justify-center rounded-full border border-[#dde1eb] bg-white text-[#2b2f3b] shadow-sm transition hover:bg-[#f5f6fb] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8] dark:border-[#354154] dark:bg-[#202838] dark:text-[#e9eef8] dark:hover:bg-[#293448]'>
-                                        <Camera className='h-4 w-4' />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <Link href='/profile/edit-profile' className='mb-2 hidden items-center gap-2 rounded-full bg-[#5b4fe8] px-5 py-2.5 text-[14px] font-semibold text-white shadow-[0_6px_16px_rgba(91,79,232,0.25)] transition hover:bg-[#4f43d8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b4fe8] sm:flex'>
-                                <PencilLine className='h-4 w-4' />
-                                Edit Profile
-                            </Link>
-                        </div>
+                       <ProfileHeader src={user.photo} alt={user.name} />
                     </div>
 
                     <div className='px-5 pb-6 pt-2 sm:px-7 sm:pb-7'>
@@ -140,20 +121,22 @@ async function Profile({tab} : {tab :string}) {
                     </div>
                 </div>
             </div>
+            {preview === "image" && <ProfileImagePreview src={user.photo} alt={user.name} />}
+            {preview === "upload" &&<ProfileImageUploader  />}
         </div>
     )
 }
 
-export default async function ProfilePage({ searchParams }: { searchParams: Promise<{ tab: string }> }) {
+export default async function ProfilePage({ searchParams }: { searchParams: Promise<{ tab: string,preview : string }> }) {
 
     const tab = (await searchParams).tab
-
-
+    const preview = (await searchParams).preview
+    
 
     return (
         <AppShell activeItem='Profile' >
             <Suspense fallback={<ProfileLoadingScreen />}>
-                <Profile tab={tab} />
+                <Profile tab={tab} preview={preview} />
             </Suspense>
         </AppShell>
     )

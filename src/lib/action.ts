@@ -363,3 +363,34 @@ export const changePasswordAction = async function (prevState: any, formData: Fo
     redirect('/profile', 'replace')
 
 }
+
+export const uploadProfilePhotoAction = async function (prevState: any, formData: FormData) {
+    const myCookies = await cookies()
+    const token= myCookies.get('tkn')?.value!
+    const photo = formData.get('photo') as File
+    const tab = formData.get('tab')?.toString()!
+    
+    const myFormData = new FormData()
+    myFormData.append('photo',photo)
+
+    let noPhotoError : null | string = null;
+    if(photo.size === 0){
+        noPhotoError= "you must select a photo"
+        return {noPhotoError};
+    }
+
+    const res = await fetch('https://route-posts.routemisr.com/users/upload-photo',{
+        method : 'PUT',
+        body : myFormData,
+        headers : {
+            token,
+        }
+    })
+
+    if(!res.ok){
+        throw new Error('coudlnet upload your photo')
+    }
+
+    revalidatePath('/profile')
+    redirect(`/profile?tab=${tab}`)
+}
