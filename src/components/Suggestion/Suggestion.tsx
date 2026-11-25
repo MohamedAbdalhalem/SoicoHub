@@ -1,21 +1,18 @@
-import { Button } from '../ui/button'
 import Image from 'next/image'
+import FollowButton from '../FollowButton/FollowButton'
 
 type SuggestionProps = {
     _id: string
     name: string
     username: string
     photo: string
-    mutualFollowersCount: number
-    followersCount: number
 }
 
 export default function Suggestion({
+    _id,
     name,
     username,
     photo,
-    mutualFollowersCount,
-    followersCount,
 }: SuggestionProps) {
     const initials = name
         .trim()
@@ -43,13 +40,7 @@ export default function Suggestion({
                 </div>
             </div>
 
-            <Button
-                size='sm'
-                aria-label={`Follow ${name}`}
-                className='h-8 rounded-full bg-[#5b4fe8] px-3 text-[12px] font-medium text-white hover:bg-[#4f43d8] cursor-pointer'
-            >
-                Follow
-            </Button>
+            <FollowButton userId={_id} name={name}/>
         </div>
     )
 }

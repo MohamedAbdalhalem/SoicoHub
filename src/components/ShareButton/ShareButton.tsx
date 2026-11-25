@@ -1,6 +1,6 @@
 'use client'
 import { sharePostAction } from '@/lib/action'
-import { CheckCheck, CircleX, Repeat2, TruckElectric } from 'lucide-react'
+import { CheckCheck, CircleX, Repeat2 } from 'lucide-react'
 import { toast } from 'sonner'
 
 

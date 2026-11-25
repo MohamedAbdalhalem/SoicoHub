@@ -29,7 +29,7 @@ export default function SignInPage() {
                             <div className='flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm'>
                                 <Sparkles className='h-4 w-4' />
                             </div>
-                            <span className='text-2xl font-semibold tracking-tight'>Route Posts</span>
+                            <span className='text-2xl font-semibold tracking-tight'>SoicoHub</span>
                         </div>
 
                         <div className='space-y-6'>
