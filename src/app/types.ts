@@ -40,6 +40,34 @@ export type postType = {
     image?: string
 }
 
+export type postDetailsCommentType = {
+    _id: string
+    content: string
+    commentCreator: postUserType
+    post: string
+    parentComment: string | null
+    likes: string[]
+    createdAt: string
+}
+
+export type postDetailsType = {
+    _id: string
+    body: string
+    privacy: string
+    user: postUserType
+    sharedPost: sharedPostType | null
+    likes: string[]
+    createdAt: string
+    commentsCount: number
+    topComment: postDetailsCommentType | null
+    sharesCount: number
+    likesCount: number
+    isShare: boolean
+    id: string
+    bookmarked: boolean
+    image?: string
+}
+
 export type userType = {
     _id: string
     name: string

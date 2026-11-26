@@ -10,6 +10,7 @@ import Image from 'next/image'
 import DeletePostButton from '../DeletePostButton/DeletePostButton'
 import ShareButton from '../ShareButton/ShareButton'
 import BookmarkButton from '../BookmarkButton/BookmarkButton'
+import Link from 'next/link'
 
 export default async function Post({ post }: { post: postType }) {
     const createdAt = new Date(post.createdAt)
@@ -27,7 +28,7 @@ export default async function Post({ post }: { post: postType }) {
     return (
         <article className='group rounded-[24px] border border-[#e5e8ee] bg-white p-4 shadow-[0_8px_24px_rgba(17,24,39,0.035)] transition-shadow duration-200 hover:shadow-[0_12px_30px_rgba(17,24,39,0.08)] sm:p-5 dark:border-[#303a4c] dark:bg-[#1b2330] dark:hover:shadow-[0_12px_30px_rgba(0,0,0,0.2)]'>
             {/* Header */}
-            <div className='mb-4 flex items-start justify-between gap-3'>
+            <Link href={`/${post._id}`} className='mb-4 flex items-start justify-between gap-3'>
                 <div className='flex min-w-0 items-center gap-3'>
                     <div className='relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-white shadow-sm dark:ring-[#293447]'>
                         <Image
@@ -65,7 +66,7 @@ export default async function Post({ post }: { post: postType }) {
                     </button>
                     <DeletePostButton postId={post._id}/>
                 </div>}
-            </div>
+            </Link>
 
             {/* Body */}
             <p className='whitespace-pre-line wrap-break-word text-[15px] leading-7 text-[#2d3746] dark:text-[#d4dce9]'>
